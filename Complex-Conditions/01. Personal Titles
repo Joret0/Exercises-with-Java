@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class p01_PersonalTitles {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        double num = Double.parseDouble(scan.nextLine());
+        String gender = scan.nextLine().toLowerCase();
+
+        if (gender.equals("m")) {
+            if (num <  16) {
+                System.out.println("Master");
+            } else if ( num >= 16) {
+                System.out.println("Mr.");
+            }
+        } else if (gender.equals("f")) {
+            if ( num < 16) {
+                System.out.println("Miss");
+            } else
+                System.out.println("Ms.");
+        }
+    }
+}
