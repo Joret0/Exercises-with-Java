@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class p07_SumSeconds {
+    public static void main(String[] args) {
+        Scanner cs = new Scanner(System.in);
+
+        int num1 = Integer.parseInt(cs.nextLine());
+        int num2 = Integer.parseInt(cs.nextLine());
+        int num3 = Integer.parseInt(cs.nextLine());
+        int sum = num1 + num2 + num3;
+
+        if (sum > 10 & sum < 60) {
+            System.out.printf("0:%d", sum);
+        } else if (sum < 10) {
+            System.out.printf("0:0%d", sum);
+        } else if (sum > 69 & sum < 120) {
+            System.out.printf("1:%d", sum - 60);
+        } else if (sum > 59 & sum < 70) {
+            System.out.printf("1:0%d", sum - 60);
+        } else if (sum > 129 & sum < 179) {
+            System.out.printf("2:%d", sum - 120);
+        } else if (sum > 120 & sum < 130) {
+            System.out.printf("2:0%d", sum - 120);
+        }
+    }
+}
