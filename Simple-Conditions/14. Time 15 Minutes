@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class p14_Time15Minutes {
+    public static void main(String[] args) {
+        Scanner cs = new Scanner(System.in);
+
+        int hour = Integer.parseInt(cs.nextLine());
+        int min = Integer.parseInt(cs.nextLine());
+        min += 15;
+
+        if (min >= 60) {
+            min -= 60;
+            hour += 1;
+        }
+        if (hour > 23) {
+            hour -= 24;
+        }
+        if (min < 10) {
+            System.out.printf("%d:0%d", hour, min);
+        } else {
+            System.out.printf("%d:%d", hour, min);
+        }
+    }
+}
