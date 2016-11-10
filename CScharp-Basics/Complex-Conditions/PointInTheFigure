@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PointInTheFigure
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int h = int.Parse(Console.ReadLine());
+            int x = int.Parse(Console.ReadLine());
+            int y = int.Parse(Console.ReadLine());
+
+            bool firstRectangle = (x > h && x < 2 * h && y >= h && y < 4 * h);
+            bool secondRectangle = (x > 0 && x < 3 * h && y > 0 && y < h);
+
+            bool firstTop = (y == 4 * h && x >= h && x <= 2 * h);
+            bool firstLeft = (x == h && y >= h && y <= 4 * h);
+            bool firstRight = (x == 2 * h && y >= h && y <= 4 * h);
+            bool secondUpLeft = (y == h && x >= 0 && x <= h);
+            bool secondUpRight = (y == h && x >= 2 * h && x <= 3 * h);
+            bool secondLeft = (x == 0 && y >= 0 && y <= h);
+            bool secondRight = (x == 3 * h && y >= 0 && y <= h);
+            bool secondDown = (y == 0 && x >= 0 && x <= 3 * h);
+
+            bool isAtBorder = (firstTop || firstLeft || firstRight || secondUpLeft || secondUpRight || secondLeft || secondRight || secondDown);
+
+            if (firstRectangle || secondRectangle)
+            {
+                Console.WriteLine("inside");
+            }
+            else if (isAtBorder)
+            {
+                Console.WriteLine("border");
+            }
+            else
+            {
+                Console.WriteLine("outside");
+            }
+        }
+    }
+}
