@@ -1,0 +1,68 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CurrencyConverter
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double value = double.Parse(Console.ReadLine());
+            string firstCurrency = Console.ReadLine();
+            string secoundCurrency = Console.ReadLine();
+
+            if (firstCurrency == "BGN" && secoundCurrency == "EUR")
+            {
+                value /= 1.95583;
+            }
+            else if (firstCurrency == "BGN" && secoundCurrency == "USD")
+            {
+                value /= 1.79549;
+            }
+            else if (firstCurrency == "BGN" && secoundCurrency == "GBP")
+            {
+                value /= 2.53405;
+            }
+            else if (firstCurrency == "EUR" && secoundCurrency == "BGN")
+            {
+                value *= 1.95583;
+            }
+            else if (firstCurrency == "USD" && secoundCurrency == "BGN")
+            {
+                value *= 1.79549;
+            }
+            else if (firstCurrency == "GBR" && secoundCurrency == "BGN")
+            {
+                value *= 2.53405;
+            }
+            else if (firstCurrency == "EUR" && secoundCurrency == "USD")
+            {
+                value = (value * 1.95583) / 1.79549;
+            }
+            else if (firstCurrency == "EUR" && secoundCurrency == "GBP")
+            {
+                value = (value * 1.95583) / 2.53405;
+            }
+            else if (firstCurrency == "USD" && secoundCurrency == "EUR")
+            {
+                value = (value * 1.79549) / 1.95583;
+            }
+            else if (firstCurrency == "USD" && secoundCurrency == "GBP")
+            {
+                value = (value * 1.79549) / 2.53405;
+            }
+            else if (firstCurrency == "GBP" && secoundCurrency == "EUR")
+            {
+                value = (value * 2.53405) / 1.95583;
+            }
+            else if (firstCurrency == "GBP" && secoundCurrency == "USD")
+            {
+                value = (value * 2.53405) / 1.79549;
+            }
+            Console.WriteLine("{0:f2} {1}", value, secoundCurrency);
+       }
+    }
+}
