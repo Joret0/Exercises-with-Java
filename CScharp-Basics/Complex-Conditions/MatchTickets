@@ -1,0 +1,188 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MatchTickets
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double money = double.Parse(Console.ReadLine());
+            string tiketType = Console.ReadLine().ToLower();
+            double groupOfPeople = double.Parse(Console.ReadLine());
+            double transport = 0;
+            double moneyLeft = 0;
+            double moneyForTikets = 0;
+
+            if (groupOfPeople >= 1 && groupOfPeople <= 4)
+            {               
+                if (tiketType == "normal")
+                {
+                    transport = money * 0.75;
+                    moneyForTikets = money - transport;
+                    moneyLeft = moneyForTikets - (groupOfPeople * 249.99);
+
+                    if (moneyLeft > 0)
+                    {
+                        Console.WriteLine("Yes! You have {0:f2} leva left.", moneyLeft);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Not enough money! You need {0:f2} leva.", Math.Abs(moneyLeft));
+                    }
+                }
+                else
+                {
+                    transport = money * 0.75;
+                    moneyForTikets = money - transport;
+                    moneyLeft = moneyForTikets - (groupOfPeople * 499.99);
+
+                    if (moneyLeft > 0)
+                    {
+                        Console.WriteLine("Yes! You have {0:f2} leva left.", moneyLeft);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Not enough money! You need {0:f2} leva.", Math.Abs(moneyLeft));
+                    }
+                }
+            }
+            else if (groupOfPeople >= 5 && groupOfPeople <= 9)
+            {
+                if (tiketType == "normal")
+                {
+                    transport = money * 0.6;
+                    moneyForTikets = money - transport;
+                    moneyLeft = moneyForTikets - (groupOfPeople * 249.99);
+
+                    if (moneyLeft > 0)
+                    {
+                        Console.WriteLine("Yes! You have {0:f2} leva left.", moneyLeft);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Not enough money! You need {0:f2} leva.", Math.Abs(moneyLeft));
+                    }
+                }
+                else
+                {
+                    transport = money * 0.6;
+                    moneyForTikets = money - transport;
+                    moneyLeft = moneyForTikets - (groupOfPeople * 499.99);
+
+                    if (moneyLeft > 0)
+                    {
+                        Console.WriteLine("Yes! You have {0:f2} leva left.", moneyLeft);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Not enough money! You need {0:f2} leva.", Math.Abs(moneyLeft));
+                    }
+                }
+            }
+            else if (groupOfPeople >= 10 && groupOfPeople <= 24)
+            {
+                if (tiketType == "normal")
+                {
+                    transport = money * 0.5;
+                    moneyForTikets = money - transport;
+                    moneyLeft = moneyForTikets - (groupOfPeople * 249.99);
+
+                    if (moneyLeft > 0)
+                    {
+                        Console.WriteLine("Yes! You have {0:f2} leva left.", moneyLeft);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Not enough money! You need {0:f2} leva.", Math.Abs(moneyLeft));
+                    }
+                }
+                else
+                {
+                    transport = money * 0.5;
+                    moneyForTikets = money - transport;
+                    moneyLeft = moneyForTikets - (groupOfPeople * 499.99);
+
+                    if (moneyLeft > 0)
+                    {
+                        Console.WriteLine("Yes! You have {0:f2} leva left.", moneyLeft);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Not enough money! You need {0:f2} leva.", Math.Abs(moneyLeft));
+                    }
+                }
+            }
+            else if (groupOfPeople >= 25 && groupOfPeople <= 49)
+            {
+                if (tiketType == "normal")
+                {
+                    transport = money * 0.4;
+                    moneyForTikets = money - transport;
+                    moneyLeft = moneyForTikets - (groupOfPeople * 249.99);
+
+                    if (moneyLeft > 0)
+                    {
+                        Console.WriteLine("Yes! You have {0:f2} leva left.", moneyLeft);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Not enough money! You need {0:f2} leva.", Math.Abs(moneyLeft));
+                    }
+                }
+                else
+                {
+                    transport = money * 0.4;
+                    moneyForTikets = money - transport;
+                    moneyLeft = moneyForTikets - (groupOfPeople * 499.99);
+
+                    if (moneyLeft > 0)
+                    {
+                        Console.WriteLine("Yes! You have {0:f2} leva left.", moneyLeft);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Not enough money! You need {0:f2} leva.", Math.Abs(moneyLeft));
+                    }
+                }
+            }
+            else if (groupOfPeople > 50)
+            {
+                if (tiketType == "normal")
+                {
+                    transport = money * 0.25;
+                    moneyForTikets = money - transport;
+                    moneyLeft = moneyForTikets - (groupOfPeople * 249.99);
+
+                    if (moneyLeft > 0)
+                    {
+                        Console.WriteLine("Yes! You have {0:f2} leva left.", moneyLeft);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Not enough money! You need {0:f2} leva.", Math.Abs(moneyLeft));
+                    }
+                }
+                else
+                {
+                    transport = money * 0.25;
+                    moneyForTikets = money - transport;
+                    moneyLeft = moneyForTikets - (groupOfPeople * 499.99);
+
+                    if (moneyLeft > 0)
+                    {
+                        Console.WriteLine("Yes! You have {0:f2} leva left.", moneyLeft);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Not enough money! You need {0:f2} leva.", Math.Abs(moneyLeft));
+                    }
+                }
+            }
+
+        }
+    }
+}
