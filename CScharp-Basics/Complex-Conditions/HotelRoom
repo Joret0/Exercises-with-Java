@@ -1,0 +1,66 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HotelRoom
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string month = Console.ReadLine().ToLower();
+            double days = double.Parse(Console.ReadLine());
+            double priceStudio = 0;
+            double priceApartment = 0;
+
+            if (month == "may" || month == "october")
+            {
+                if (days < 7)
+                {
+                    priceStudio = days * 50;
+                    priceApartment = days * 65;
+                }
+                else if (days >= 7 && days <= 14)
+                {
+                    priceStudio = days * 50 - (days * 50) * 0.05;
+                    priceApartment = days * 65;
+                }
+                else if (days > 14)
+                {
+                    priceStudio = days * 50 - (days * 50) * 0.30;
+                    priceApartment = days * 65 - (days * 65) * 0.1;
+                }
+            }
+            else if (month == "june" || month == "september")
+            {
+                if (days > 14)
+                {
+                    priceStudio = days * 75.20 - (days * 75.20) * 0.2;
+                    priceApartment = days * 68.70 - (days * 68.70) * 0.1;
+                }
+                else
+                {
+                    priceApartment = days * 68.70;
+                    priceStudio = days * 75.20;
+                }
+            }
+            else if (month == "july" || month == "august")
+            {
+                if (days > 14)
+                {
+                    priceStudio = days * 76;
+                    priceApartment = days * 77 - (days * 77) * 0.1;
+                }
+                else
+                {
+                    priceStudio = days * 76;
+                    priceApartment = days * 77;
+                }
+            }
+            Console.WriteLine("Apartment: {0:f2} lv.", priceApartment);
+            Console.WriteLine("Studio: {0:f2} lv.", priceStudio);
+        }
+    }
+}
