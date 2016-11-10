@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Cinema
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string typeProjection = Console.ReadLine().ToLower();
+            double rows = double.Parse(Console.ReadLine());
+            double cols = double.Parse(Console.ReadLine());
+            double rate = 0;
+            if (typeProjection == "premiere")
+            {
+                rate = 12;
+            }
+            else if (typeProjection == "normal")
+            {
+                rate = 7.50;
+            }
+            else if (typeProjection == "discount")
+            {
+                rate = 5;
+            }
+            double incomes = rows * cols * rate;
+            Console.WriteLine("{0:f2} leva", incomes);
+        }
+    }
+}
