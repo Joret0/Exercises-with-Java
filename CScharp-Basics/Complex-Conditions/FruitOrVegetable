@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FruitOrVegetable
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string name = Console.ReadLine().ToLower();
+            bool isFruit = (name == "banana" || name == "apple" || name == "kiwi" || name == "cherry" || name == "lemon" || name == "grapes");
+            bool isVegetable = (name == "tomato" || name == "cucumber" || name == "pepper" || name == "carrot");
+
+            if (isFruit)
+            {
+                Console.WriteLine("fruit");
+            }
+            else if (isVegetable)
+            {
+                Console.WriteLine("vegetable");
+            }
+            else
+            {
+                Console.WriteLine("unknown");
+            }
+        }
+    }
+}
