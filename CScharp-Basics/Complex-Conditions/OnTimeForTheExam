@@ -1,0 +1,76 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace OnTimeForTheExam
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int examHour = int.Parse(Console.ReadLine());
+            int examMinute = int.Parse(Console.ReadLine());
+            int arrivalHour = int.Parse(Console.ReadLine());
+            int arrivalMinute = int.Parse(Console.ReadLine());
+
+            int ExamTime = (examHour * 60) + examMinute;
+            int arrivalTime = (arrivalHour * 60) + arrivalMinute;
+            int differentTime = ExamTime - arrivalTime;
+            int differntSecondTime = arrivalTime - ExamTime;
+
+            if (differentTime == 0)
+            {
+                Console.WriteLine("On Time");
+            }
+            else if (differentTime > 0 && differentTime <= 30)
+            {
+                Console.WriteLine("On Time");
+                Console.WriteLine("{0} minutes before the start", differentTime);
+            }
+            else if (differentTime > 30 && differentTime < 60)
+            {
+                Console.WriteLine("Early");
+                Console.WriteLine("{0} minutes before the start", differentTime);
+            }
+            else if (differentTime >= 60)
+            {
+                int hour = differentTime / 60;
+                int minutes = differentTime % 60;
+
+                if (minutes >= 0 && minutes < 10)
+                {
+                    Console.WriteLine("Early");
+                    Console.WriteLine("{0}:0{1} hours before the start", hour, minutes);
+                }
+                else
+                {
+                    Console.WriteLine("Early");
+                    Console.WriteLine("{0}:{1} hours before the start", hour, minutes);
+                }
+            }
+            else if (differntSecondTime > 0 && differntSecondTime < 60)
+            {
+                Console.WriteLine("Late");
+                Console.WriteLine("{0} minutes after the start", differntSecondTime);
+            }
+            else if (differntSecondTime >= 60)
+            {
+                int hour = differntSecondTime / 60;
+                int minutes = differntSecondTime % 60;
+
+                if (minutes >= 0 && minutes < 10)
+                {
+                    Console.WriteLine("Late");
+                    Console.WriteLine("{0}:0{1} hours after the start", hour, minutes);
+                }
+                else
+                {
+                    Console.WriteLine("Late");
+                    Console.WriteLine("{0}:{1} hours after the start", hour, minutes);
+                }
+            }
+        }
+    }
+}
