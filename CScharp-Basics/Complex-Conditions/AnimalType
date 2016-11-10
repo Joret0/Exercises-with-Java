@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AnimalType
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string animal = Console.ReadLine();
+            string isAnimal = "";
+
+            switch (animal)
+            {
+                case "dog":
+                    isAnimal = "mammal";
+                    break;
+                case "crocodile":
+                    isAnimal = "reptile";
+                    break;
+                case "tortoise":
+                    isAnimal = "reptile";
+                    break;
+                case "snake":
+                    isAnimal = "reptile";
+                    break;
+                default:
+                    isAnimal = "unknown";
+                    break;
+            }
+            Console.WriteLine(isAnimal);
+        }
+    }
+}
