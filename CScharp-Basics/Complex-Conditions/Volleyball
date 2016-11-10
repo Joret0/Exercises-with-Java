@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Volleyball
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string year = Console.ReadLine().ToLower();
+            double p = double.Parse(Console.ReadLine());
+            double h = double.Parse(Console.ReadLine());
+
+            double weekends = 48;
+            double weekendsInSofia = (weekends - h) * 3 / 4;
+            double holidaysPlays = p * 2 / 3;
+            double result = 0;
+
+            if (year == "normal")
+            {
+                result = (weekendsInSofia + holidaysPlays + h);
+            }
+            else if (year == "leap")
+            {
+                result = (weekendsInSofia + holidaysPlays + h) * 0.15 + (weekendsInSofia + holidaysPlays + h);
+            }
+            Console.WriteLine(Math.Truncate(result));
+        }
+    }
+}
