@@ -1,0 +1,75 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Bonus_Score
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double number = double.Parse(Console.ReadLine());
+            double bonus = 0;
+            double sum = 0;
+
+            if (number > 1000)
+            {
+                if (number % 2 == 0)
+                {
+                    bonus = number * 0.1 + 1;
+                    sum = number + bonus;
+                }
+                else if (number % 10 == 5)
+                {
+                    bonus = number * 0.1 + 2;
+                    sum = number + bonus;
+                }
+                else
+                {
+                    bonus = number * 0.1;
+                    sum = number + bonus;
+                }
+            }
+            else if (number > 100)
+            {
+                if (number % 2 == 0)
+                {
+                    bonus = number * 0.2 + 1;
+                    sum = number + bonus;
+                }
+                else if (number % 10 == 5)
+                {
+                    bonus = number * 0.2 + 2;
+                    sum = number + bonus;
+                }
+                else
+                {
+                    bonus = number * 0.2;
+                    sum = number + bonus;
+                }
+            }
+            else if (number <= 100)
+            {
+                if ( number % 2 == 0)
+                {
+                    bonus = 5 + 1;
+                    sum = number + bonus;
+                }
+                else if (number % 10 == 5)
+                {
+                    bonus = 5 + 2;
+                    sum = number + bonus;
+                }
+                else
+                {
+                    bonus = 5;
+                    sum = number + bonus;
+                }
+            }
+            Console.WriteLine(bonus);
+            Console.WriteLine(sum);
+        }
+    }
+}
