@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Number_0._._._100_to_Text
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int num = int.Parse(Console.ReadLine());
+
+            string [] elevenToFifteen = { "", "eleven", "twelve", "thirteen", "", "fifteen" };
+            string [] ones = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+            string [] tens = {"", "ten", "twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninety", "one hundred"};
+
+            string result = "";
+            int position;
+            if (num < 0 || num > 100)
+            {
+                result = "invalid number";
+            }
+            else if (num <= 9)
+            {
+                result = ones[num];
+            }
+            else if (num % 10 == 0)
+            {
+                position = num / 10;
+                result = tens[position];
+            }
+            else if (num <= 19)
+            {
+                position = num % 10;
+                result = num <= 13 || num == 15 ? elevenToFifteen[position] : ones[position] + "teen";
+            }
+            else
+            {
+                int first = num / 10;
+                int second = num % 10;
+                result = tens[first] + " " + ones[second];
+            }
+            Console.WriteLine(result);
+        }
+    }
+}
