@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Area_of_Figures
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string figure = Console.ReadLine();
+            double area = 0;
+            if (figure == "square")
+            {
+                double num = double.Parse(Console.ReadLine());
+                area = num * num;
+            }
+            else if (figure == "rectangle")
+            {
+                double firstNum = double.Parse(Console.ReadLine());
+                double secondNum = double.Parse(Console.ReadLine());
+                area = firstNum * secondNum;
+            }
+            else if (figure == "circle")
+            {
+                double r = double.Parse(Console.ReadLine());
+                area = Math.PI * r * r;
+            }
+            else if (figure == "triangle")
+            {
+                double firstNum = double.Parse(Console.ReadLine());
+                double secondNum = double.Parse(Console.ReadLine());
+                area = (firstNum * secondNum) / 2;
+            }
+            Console.WriteLine("{0}:f3", area);
+        }
+    }
+}
