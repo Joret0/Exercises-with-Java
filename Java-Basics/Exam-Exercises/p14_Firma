@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+public class p02_Firma {
+    public static void main(String[] args) {
+        Scanner console = new Scanner(System.in);
+
+        int hoursNeededToFinish = Integer.parseInt(console.nextLine());
+        int daysNeededToFinish = Integer.parseInt(console.nextLine());
+        int emplsWorkOvertime = Integer.parseInt(console.nextLine());
+
+        double hoursForWork = (daysNeededToFinish - (daysNeededToFinish * 0.1)) * 8;
+        double overtimeHours = emplsWorkOvertime * (2 * daysNeededToFinish);
+        double allhours = hoursForWork + overtimeHours;
+        double hoursDifference = allhours - hoursNeededToFinish;
+
+        if (hoursDifference >= 0){
+            System.out.printf("Yes!%s hours left.", (int)Math.floor(hoursDifference));
+        } else {
+            System.out.printf("Not enough time!%s hours needed.", (int)Math.abs(Math.floor(hoursDifference)));
+        }
+    }
+}
