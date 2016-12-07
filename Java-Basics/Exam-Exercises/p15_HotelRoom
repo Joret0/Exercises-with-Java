@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class p03_HotelRoom {
+    public static void main(String[] args) {
+        Scanner console = new Scanner(System.in);
+
+        String month = console.nextLine().toLowerCase();
+        int days = Integer.parseInt(console.nextLine());
+        double priceStudio = 1;
+        double priceApartment = 1;
+
+        if (month.equals("may") || month.equals("october")){
+            if (days > 7 && days <= 14){
+                priceStudio = (50 * days) - ((50 * days) * 0.05);
+                priceApartment = 65 * days;
+            } else if (days > 14){
+                priceStudio = (50 * days) - ((50 * days) * 0.3);
+                priceApartment = 65 * days - ((65 * days) * 0.1);
+            } else {
+                priceStudio = 50 * days;
+                priceApartment = 65 * days;
+            }
+        }else if (month.equals("june") || month.equals("september")){
+            if (days > 14){
+                priceStudio = (75.20 * days) - ((75.20 * days) * 0.2);
+                priceApartment = (68.70 * days) - ((68.70 * days) * 0.1);
+            } else {
+                priceStudio = 75.20 * days;
+                priceApartment = 68.70 * days;
+            }
+        }else if (month.equals("july") || month.equals("august")){
+            if (days > 14){
+                priceStudio = 76 * days;
+                priceApartment = (77 * days) - ((77 * days) * 0.1);
+            } else {
+                priceStudio = 76 * days;
+                priceApartment = 77 * days;
+            }
+        }
+        System.out.printf("Apartment: %.02f lv.%n", priceApartment);
+        System.out.printf("Studio: %.02f lv.%n", priceStudio);
+    }
+}
