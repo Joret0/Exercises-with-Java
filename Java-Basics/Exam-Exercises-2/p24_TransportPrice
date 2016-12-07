@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class TransportPrice {
+    public static void main(String[] args) {
+        Scanner console = new Scanner(System.in);
+        int n = Integer.parseInt(console.nextLine());
+        String str = console.nextLine().toLowerCase();
+        double price = 0;
+
+        if (n >= 100){
+            price = n * 0.06;
+        } else if (n >= 20 && n < 100){
+            price = n * 0.09;
+        } else {
+            if (str.equals("day")){
+                price = n * 0.79 + 0.70;
+            } else {
+                price = n * 0.90 + 0.70;
+            }
+        }
+        System.out.println(price);
+    }
+}
