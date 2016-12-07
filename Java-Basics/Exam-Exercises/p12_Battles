@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class p06_Battles {
+    public static void main(String[] args) {
+        Scanner console = new Scanner(System.in);
+
+        int first = Integer.parseInt(console.nextLine());
+        int second = Integer.parseInt(console.nextLine());
+        int max = Integer.parseInt(console.nextLine());
+        int count = 0;
+
+        for (int i = 1; i <= first; i++) {
+            for (int j = 1; j <= second; j++) {
+
+                count++;
+                if (count > max){
+                    break;
+                }
+                System.out.printf("(%s <-> %s) ", i, j);
+            }
+        }
+        System.out.println();
+    }
+}
