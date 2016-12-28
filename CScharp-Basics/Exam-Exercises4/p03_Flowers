@@ -1,0 +1,103 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace p03_Flowers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int hrisantemi = int.Parse(Console.ReadLine());
+            int rose = int.Parse(Console.ReadLine());
+            int lale = int.Parse(Console.ReadLine());
+            string season = Console.ReadLine().ToLower();
+            string holliday = Console.ReadLine().ToLower();
+
+            double priceHrisantemi = 0;
+            double priceRose = 0;
+            double priceLale = 0;
+            double priceBucket = 0;
+
+
+            if (season == "spring" || season == "summer")
+            {
+              
+
+                if (holliday == "y")
+                {
+                    priceHrisantemi = (hrisantemi * 2.0) + ((hrisantemi * 2.0) * 0.15);
+                    priceRose = (rose * 4.10) + ((rose * 4.10) * 0.15);
+                    priceLale = (lale * 2.50) + ((lale * 2.50) * 0.15);
+                    priceBucket = priceHrisantemi + priceRose + priceLale;
+
+                    if (lale >= 7 && season == "spring")
+                    {
+                        priceBucket -= priceBucket * 0.05;
+                    }
+                    if (hrisantemi + rose + lale >= 20)
+                    {
+                        priceBucket -= priceBucket * 0.20;
+                    }
+                }
+                else
+                {
+                    priceHrisantemi = hrisantemi * 2.0;
+                    priceRose = rose * 4.10;
+                    priceLale = lale * 2.50;
+                    priceBucket = priceHrisantemi + priceRose + priceLale;
+
+                    if (lale >= 7 && season == "spring")
+                    {
+                        priceBucket -= priceBucket * 0.05;
+                    }
+                    if (hrisantemi + rose + lale >= 20)
+                    {
+                        priceBucket -= priceBucket * 0.20;
+                    }
+                }
+            }
+            else if (season == "autumn" || season == "winter")
+            {
+                if (holliday == "y")
+                {
+                    priceHrisantemi = (hrisantemi * 3.75) + ((hrisantemi * 3.75) * 0.15);
+                    priceRose = (rose * 4.50) + ((rose * 4.50) * 0.15);
+                    priceLale = (lale * 4.15) + ((lale * 4.15) * 0.15);
+                    priceBucket = priceHrisantemi + priceRose + priceLale;
+                    priceBucket = priceHrisantemi + priceRose + priceLale;
+
+                    if (rose >= 10 && season == "winter")
+                    {
+                        priceBucket -= priceBucket * 0.10;
+                    }
+                    if (hrisantemi + rose + lale >= 20)
+                    {
+                        priceBucket -= priceBucket * 0.20;
+                    }
+                }
+                else
+                {
+                    priceHrisantemi = hrisantemi * 3.75;
+                    priceRose = rose * 4.50;
+                    priceLale = lale * 4.15;
+                    priceBucket = priceHrisantemi + priceRose + priceLale;
+
+                    if (rose >= 10 && season == "winter")
+                    {
+                        priceBucket -= priceBucket * 0.10;
+                    }
+                    if (hrisantemi + rose + lale >= 20)
+                    {
+                        priceBucket -= priceBucket * 0.20;
+                    }
+                }
+            }
+
+            double totalPrice = priceBucket + 2;
+            Console.WriteLine("{0:f2}", totalPrice);
+        }
+    }
+}
