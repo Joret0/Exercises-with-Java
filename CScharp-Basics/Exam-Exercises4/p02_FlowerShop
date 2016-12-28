@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace p02_FlowerShop
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int magnoliiPieces = int.Parse(Console.ReadLine());
+            int siumbiuliPieces = int.Parse(Console.ReadLine());
+            int rosePieces = int.Parse(Console.ReadLine());
+            int cactusPieces = int.Parse(Console.ReadLine());
+            double priceGift = double.Parse(Console.ReadLine());
+
+            double magnoliiPrice = 3.25;
+            double siumbiulPrice = 4.00;
+            double rosePrice = 3.50;
+            double cactusPrice = 8.00;
+
+            double sum = (magnoliiPieces * magnoliiPrice) + (siumbiuliPieces * siumbiulPrice) + (rosePieces * rosePrice) + (cactusPieces * cactusPrice);
+            double tax = sum * 0.05;
+            double profit = sum - tax;
+
+            if (priceGift > profit)
+            {
+                double difference1 = Math.Ceiling(priceGift - profit);
+                Console.WriteLine("She will have to borrow {0} leva.", difference1);
+            }
+            else
+            {
+                double difference2 = Math.Floor(profit - priceGift);
+                Console.WriteLine("She is left with {0} leva.", difference2);
+            }
+        }
+    }
+}
