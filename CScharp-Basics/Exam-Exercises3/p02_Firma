@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace p02_Firma
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int neededHours = int.Parse(Console.ReadLine());
+            int daysNeeded = int.Parse(Console.ReadLine());
+            int employees = int.Parse(Console.ReadLine());
+
+            double workingDays = daysNeeded - (daysNeeded * 0.10);
+            double workingHours = (workingDays * 8) + (employees * (2 * daysNeeded));
+
+            if (workingHours >= neededHours)
+            {
+                double difference1 = Math.Floor(workingHours - neededHours);
+                Console.WriteLine("Yes!{0} hours left.", difference1);
+            }
+            else
+            {
+                double difference2 = Math.Ceiling(neededHours - workingHours);
+                Console.WriteLine("Not enough time!{0} hours needed.", difference2);
+            }
+        }
+    }
+}
