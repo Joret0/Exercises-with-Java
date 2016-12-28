@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace RhombusOfStars
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+            int stars = 1;
+            int spaces = n - stars;
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < spaces; j++)
+                {
+                    Console.Write(" ");
+                }
+                for (int j = 0; j < stars; j++)
+                {
+                    Console.Write("* ");
+                }
+                spaces--;
+                stars++;
+                Console.WriteLine();
+            }
+
+            spaces = 1;
+            stars = n - spaces;
+            for (int i = 0; i < 2 * n; i++)
+            {
+                for (int j = 0; j < spaces; j++)
+                {
+                    Console.Write(" ");
+                }
+                for (int j = 0; j < stars; j++)
+                {
+                    Console.Write("* ");
+                }
+                spaces++;
+                stars--;
+                Console.WriteLine();
+            }
+        }
+    }
+}
