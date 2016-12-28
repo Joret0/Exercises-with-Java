@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace p04_Logistics
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+            int microbus = 0;
+            int truck = 0;
+            int train = 0;
+
+            for (int i = 0; i < n; i++)
+            {
+                int num = int.Parse(Console.ReadLine());
+                if (num <= 3)
+                {
+                    microbus += num;
+                }
+                else if (num > 3 && num <= 11)
+                {
+                    truck += num;
+                }
+                else
+                {
+                    train += num;
+                }
+            }
+            double allTones = microbus + truck + train;
+            double average = (microbus * 200.00 + truck * 175.00 + train * 120.00) / allTones;
+            double micPerc = (microbus / allTones) * 100.00;
+            double truckPer = (truck / allTones) * 100.00;
+            double trainPerc = (train / allTones) * 100.00;
+
+            Console.WriteLine("{0:f2}", average);
+            Console.WriteLine("{0:f2}%", micPerc);
+            Console.WriteLine("{0:f2}%", truckPer);
+            Console.WriteLine("{0:f2}%", trainPerc);
+        }
+    }
+}
