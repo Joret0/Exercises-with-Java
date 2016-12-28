@@ -1,0 +1,60 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace p03_OnTimeForTheExam
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int examHour = int.Parse(Console.ReadLine());
+            int examMinutes = int.Parse(Console.ReadLine());
+            int arriveHour = int.Parse(Console.ReadLine());
+            int arriveMinutes = int.Parse(Console.ReadLine());
+
+            double examTime = (examHour * 60) + examMinutes;
+            double arriveTime = (arriveHour * 60) + arriveMinutes;
+            double difference1 = examTime - arriveTime;
+            double difference2 = arriveTime - examTime;
+
+            if (examTime >= arriveTime)
+            {
+                if (difference1 == 0)
+                {
+                    Console.WriteLine("On time");
+                }
+                else if (difference1 > 0 && difference1 <= 30)
+                {
+                    Console.WriteLine("On time");
+                    Console.WriteLine("{0} minutes before the start", (int)difference1);
+                }
+                else if (difference1 > 30 && difference1 < 60)
+                {
+                    Console.WriteLine("Early");
+                    Console.WriteLine("{0} minutes before the start", (int)difference1);
+                }
+                else if (difference1 > 59)
+                {
+                    Console.WriteLine("Early");
+                    Console.WriteLine("{0}:{1:00} hours before the start", (int)difference1 / 60, (int)difference1 % 60);
+                }
+            }
+            else
+            {
+                if (difference2 < 60)
+                {
+                    Console.WriteLine("Late");
+                    Console.WriteLine("{0} minutes after the start", difference2);
+                }
+                else if (difference2 > 59)
+                {
+                    Console.WriteLine("Late");
+                    Console.WriteLine("{0}:{1:00} hours after the start", (int)difference2 / 60, (int)difference2 % 60);
+                }
+            }
+        }
+    }
+}
