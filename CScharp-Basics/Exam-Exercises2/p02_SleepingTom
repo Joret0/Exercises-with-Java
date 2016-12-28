@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace p02_SleepingTom
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int daysOff = int.Parse(Console.ReadLine());
+
+            double minutesInDayOff = daysOff * 127.0;
+            double minutesInDayWork = (365 - daysOff) * 63.0;
+            double minutesLeft = 30000.0 - (minutesInDayOff + minutesInDayWork);
+            if (minutesLeft >= 0)
+            {
+                Console.WriteLine("Tom sleeps well");
+                Console.WriteLine("{0} hours and {1} minutes less for play", (int)minutesLeft / 60, (int)minutesLeft % 60);
+            }
+            else
+            {
+                double minutesOver = Math.Abs(minutesLeft);
+
+                Console.WriteLine("Tom will run away");
+                Console.WriteLine("{0} hours and {1} minutes more for play", (int)minutesOver / 60, (int)minutesOver % 60);
+            }
+        }
+    }
+}
