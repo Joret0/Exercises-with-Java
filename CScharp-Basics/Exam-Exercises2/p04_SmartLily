@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace p04_SmartLily
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            int yearslily = int.Parse(Console.ReadLine());
+            double washingmashine = double.Parse(Console.ReadLine());
+            int toyPrice = int.Parse(Console.ReadLine());
+            int money = 0;
+            int toy = 0;
+            int sum = 10;
+
+            for (int i = 1; i <= yearslily; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    money += sum - 1;
+                    sum += 10;
+                }
+                else
+                {
+                    toy++;
+                }
+            }
+            double totalMoney = money + (toy * toyPrice);
+
+            if (totalMoney >= washingmashine)
+            {
+                double difference1 = totalMoney - washingmashine;
+                Console.WriteLine("Yes! {0:f2}", difference1);
+            }
+            else
+            {
+                double difference2 = washingmashine - totalMoney;
+                Console.WriteLine("No! {0:f2}", difference2);
+            }
+        }
+    }
+}
