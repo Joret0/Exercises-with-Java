@@ -1,0 +1,28 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace p01_House_Price
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double smallRoom = Double.Parse(Console.ReadLine());
+            double kitchen = Double.Parse(Console.ReadLine());
+            double priceKm = Double.Parse(Console.ReadLine());
+
+            double secondRoom = smallRoom + (smallRoom * 0.1);
+            double thirdRoom = secondRoom + (secondRoom * 0.1);
+            double bathRoom = smallRoom / 2;
+            double apartmentKm = smallRoom + kitchen + secondRoom + thirdRoom + bathRoom;
+            double coridor = apartmentKm * 0.05;
+            double price = (apartmentKm + coridor) * priceKm;
+
+            Console.WriteLine("{0:f2}", price);
+
+        }
+    }
+}
