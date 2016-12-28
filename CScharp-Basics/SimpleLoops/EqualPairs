@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EqualPairs
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+
+            double previousPairSum = 0;
+            double currentPairSum = 0;
+            double difference = 0;
+            double biggestDifference = 1;
+
+            for (int i = 1; i <= n; i++)
+            {
+                currentPairSum = previousPairSum;
+
+                int num1 = int.Parse(Console.ReadLine());
+                int num2 = int.Parse(Console.ReadLine());
+
+                previousPairSum = num1 + num2;
+                biggestDifference = Math.Abs(previousPairSum - currentPairSum);
+
+                if (biggestDifference > difference & i >= 2)
+                {
+                    difference = biggestDifference;
+                }
+            }
+            if (difference == 0)
+            {
+                Console.WriteLine("Yes value = {0}", previousPairSum);
+            }
+            else
+            {
+                Console.WriteLine("No maxdiff = {0}", difference);
+            }
+        }
+    }
+}
