@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace p05_Rocket
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+            int sideUp = (n * 3) / 2 - 1;
+            int insideUp = 0;
+            int insideDown = n * 2 - 2;
+            int sideDown = n / 2;
+
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine(repeatStr(".", sideUp) + "/" + repeatStr(" ", insideUp) + "\\" + repeatStr(".", sideUp));
+                sideUp--;
+                insideUp += 2;
+            }
+
+            Console.WriteLine(repeatStr(".", n / 2) + repeatStr("*", n * 2) + repeatStr(".", n / 2));
+
+            for (int i = 0; i < n * 2; i++)
+            {
+                Console.WriteLine(repeatStr(".", n / 2) + "|" + repeatStr("\\", n * 2 - 2) + "|" + repeatStr(".", n / 2));
+            }
+
+            for (int i = 0; i < n / 2; i++)
+            {
+                Console.WriteLine(repeatStr(".", sideDown) + "/" + repeatStr("*", insideDown) + "\\" + repeatStr(".", sideDown));
+                sideDown--;
+                insideDown += 2;
+            }
+        }
+
+        public static string repeatStr(string text, int count)
+        {
+            string outputText = "";
+            for (int i = 0; i < count; i++)
+            {
+                outputText = outputText + text;
+            }
+            return outputText;
+        }       
+    }
+}
