@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace p05_Fox
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+            int dotsUp = 1;
+            int dashUp = n * 2 - 1;
+            int sideStars = n / 2;
+            int middleStars = n;
+            int dashesDown = 1;
+            int starsDown = n * 2 - 1;
+
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine(repeatStr("*", dotsUp) + "\\" + repeatStr("-", dashUp) + "/" + repeatStr("*", dotsUp));
+                dotsUp++;
+                dashUp -= 2;
+            }
+
+            for (int i = 0; i < n / 3; i++)
+            {
+                Console.WriteLine("|" + repeatStr("*", sideStars) + "\\" + repeatStr("*", middleStars) + "/" + repeatStr("*", sideStars) + "|");
+                sideStars++;
+                middleStars -= 2;
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine(repeatStr("-", dashesDown) + "\\" + repeatStr("*", starsDown) + "/" + repeatStr("-", dashesDown));
+                dashesDown++;
+                starsDown -= 2;
+            }
+        }
+        public static string repeatStr(string text, int count)
+        {
+            string outputText = "";
+            for (int i = 0; i < count; i++)
+            {
+                outputText = outputText + text;
+            }
+            return outputText;
+        }
+    }
+}
