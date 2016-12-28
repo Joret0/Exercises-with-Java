@@ -1,0 +1,57 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace p03_Vacation
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int oldPeople = int.Parse(Console.ReadLine());
+            int youngPeople = int.Parse(Console.ReadLine());
+            int nights = int.Parse(Console.ReadLine());
+            string transport = Console.ReadLine().ToLower();
+
+            double oldPriceTransport = 0;
+            double youngPriceTransport = 0;
+
+            switch (transport)
+            {
+                case "train":
+                    if (oldPeople + youngPeople >= 50)
+                    {
+                        oldPriceTransport = oldPeople * 24.99;
+                        youngPriceTransport = youngPeople * 14.99;
+                    }
+                    else
+                    {
+                        oldPriceTransport = (oldPeople * 24.99) * 2;
+                        youngPriceTransport = (youngPeople * 14.99) * 2;
+                    }
+                    break;
+                case "bus":
+                    oldPriceTransport = (oldPeople * 32.50) * 2;
+                    youngPriceTransport = (youngPeople * 28.50) * 2;
+                    break;
+                case "boat":
+                    oldPriceTransport = (oldPeople * 42.99) * 2;
+                    youngPriceTransport = (youngPeople * 39.99) * 2;
+                    break;
+                case "airplane":
+                    oldPriceTransport = (oldPeople * 70.00) * 2;
+                    youngPriceTransport = (youngPeople * 50.00) * 2;
+                    break;
+                default:
+                    break;
+            }
+            double sumTransport = oldPriceTransport + youngPriceTransport;
+            double hotelPrice = nights * 82.99;
+            double commision = (sumTransport + hotelPrice) * 0.10;
+            double totalSum = sumTransport + hotelPrice + commision;
+            Console.WriteLine("{0:f2}", totalSum);
+        }
+    }
+}
