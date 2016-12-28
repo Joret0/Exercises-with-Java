@@ -1,0 +1,80 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace p03_OperationsBetweenDigits
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double x = double.Parse(Console.ReadLine());
+            double y = double.Parse(Console.ReadLine());
+            string oper = Console.ReadLine();
+            double result = 0.0;
+
+            switch (oper)
+            {
+                case "+":
+                    result = x + y;
+                    if (result % 2 == 0)
+                    {
+                        Console.WriteLine("{0} {1} {2} = {3} - even", x, oper, y, result);
+                    }
+                    else
+                    {
+                        Console.WriteLine("{0} {1} {2} = {3} - odd", x, oper, y, result);
+                    }
+                    break;
+                case "-":
+                    result = x - y;
+                    if (result % 2 == 0)
+                    {
+                        Console.WriteLine("{0} {1} {2} = {3} - even", x, oper, y, result);
+                    }
+                    else
+                    {
+                        Console.WriteLine("{0} {1} {2} = {3} - odd", x, oper, y, result);
+                    }
+                    break;
+                case "*":
+                    result = x * y;
+                    if (result % 2 == 0)
+                    {
+                        Console.WriteLine("{0} {1} {2} = {3} - even", x, oper, y, result);
+                    }
+                    else
+                    {
+                        Console.WriteLine("{0} {1} {2} = {3} - odd", x, oper, y, result);
+                    }
+                    break;
+                case "/":
+                    result = x / y;
+                    if (y == 0)
+                    {
+                        Console.WriteLine("Cannot divide {0} by zero", x);
+                    }
+                    else
+                    {
+                        Console.WriteLine("{0} / {1} = {2:f2}", x, y, result);
+                    }
+                    break;
+                case "%":
+                    result = x % y;
+                    if (y == 0)
+                    {
+                        Console.WriteLine("Cannot divide {0} by zero", x);
+                    }
+                    else
+                    {
+                        Console.WriteLine("{0} % {1} = {2}", x, y, result);
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+}
