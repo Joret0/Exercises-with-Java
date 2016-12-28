@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace p04_Hospital
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+            int doctor = 7;
+            int treatedPaciant = 0;
+            int untreatedpaciant = 0;
+
+            for (int i = 1; i <= n; i++)
+            {
+                int num = int.Parse(Console.ReadLine());
+
+                if (i % 3 == 0 && untreatedpaciant > treatedPaciant)
+                {
+                    doctor++;
+                }
+                if (num > doctor)
+                {
+                    treatedPaciant += doctor;
+                    untreatedpaciant += num - doctor;
+                }
+                else
+                {
+                    treatedPaciant += num;
+                }
+            }
+
+            Console.WriteLine("Treated patients: {0}.", treatedPaciant);
+            Console.WriteLine("Untreated patients: {0}.", untreatedpaciant);
+        }
+    }
+}
