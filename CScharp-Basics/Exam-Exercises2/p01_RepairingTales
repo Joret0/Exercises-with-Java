@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace p01_RepairingTales
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double lengthPlace = double.Parse(Console.ReadLine());
+            double widthTile = double.Parse(Console.ReadLine());
+            double lenghtTile = double.Parse(Console.ReadLine());
+            double widthBench = double.Parse(Console.ReadLine());
+            double lengthBench = double.Parse(Console.ReadLine());
+
+            double areaPlace = lengthPlace * lengthPlace;
+            double areaBench = widthBench * lengthBench;
+            double areaTile = widthTile * lenghtTile;
+            double placeToCover = areaPlace - areaBench;
+            double talesNeed = placeToCover / areaTile;
+            double timeNeed = talesNeed * 0.2;
+
+            Console.WriteLine(talesNeed);
+            Console.WriteLine(timeNeed);
+        }
+    }
+}
