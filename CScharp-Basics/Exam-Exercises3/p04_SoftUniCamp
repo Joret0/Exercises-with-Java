@@ -1,0 +1,60 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace p04_SoftUniCamp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+
+            double car = 0.0;
+            double microbus = 0.0;
+            double smallBus = 0.0;
+            double bus = 0.0;
+            double train = 0.0;
+
+            for (int i = 0; i < n; i++)
+            {
+                int num = int.Parse(Console.ReadLine());
+                if (num < 6)
+                {
+                    car += num;
+                }
+                else if (num > 5 && num <13)
+                {
+                    microbus += num;
+                }
+                else if (num > 12 && num < 26)
+                {
+                    smallBus += num;
+                }
+                else if (num > 25 && num < 41)
+                {
+                    bus += num;
+                }
+                else
+                {
+                    train += num;
+                }
+            }
+
+            double sumGroup = car + microbus + smallBus + bus + train;
+            double percCar = (car / sumGroup) * 100;
+            double percMicrobus = (microbus / sumGroup) * 100;
+            double percSmallbus = (smallBus / sumGroup) * 100;
+            double percBus = (bus / sumGroup) * 100;
+            double percTrain = (train / sumGroup) * 100;
+
+            Console.WriteLine("{0:f2}%", percCar);
+            Console.WriteLine("{0:f2}%", percMicrobus);
+            Console.WriteLine("{0:f2}%", percSmallbus);
+            Console.WriteLine("{0:f2}%", percBus);
+            Console.WriteLine("{0:f2}%", percTrain);
+        }
+    }
+}
