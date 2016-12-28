@@ -1,0 +1,58 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace p04_Grades
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+
+            double grade1 = 0.0;
+            double grade2 = 0.0;
+            double grade3 = 0.0;
+            double grade4 = 0.0;
+            double sum = 0.0;
+
+
+            for (int i = 0; i < n; i++)
+            {
+                double num = double.Parse(Console.ReadLine());
+                sum += num;
+
+                if (num >= 2.00 && num <3.00)
+                {
+                    grade4++;
+                }
+                else if (num >= 3.00 && num < 4.00)
+                {
+                    grade3++;
+                }
+                else if (num >= 4.00 && num < 5.00)
+                {
+                    grade2++;
+                }
+                else if (num >= 5.00)
+                {
+                    grade1++;
+                }
+            }
+
+            double grade1Perc = (grade1 / n) * 100.0;
+            double grade2Perc = (grade2 / n) * 100.0;
+            double grade3Perc = (grade3 / n) * 100.0;
+            double grade4Perc = (grade4 / n) * 100.0;
+            double average = sum / n;
+
+            Console.WriteLine("Top students: {0:f2}%", grade1Perc);
+            Console.WriteLine("Between 4.00 and 4.99: {0:f2}%", grade2Perc);
+            Console.WriteLine("Between 3.00 and 3.99: {0:f2}%", grade3Perc);
+            Console.WriteLine("Fail: {0:f2}%", grade4Perc);
+            Console.WriteLine("Average: {0:f2}", average);
+        }
+    }
+}
