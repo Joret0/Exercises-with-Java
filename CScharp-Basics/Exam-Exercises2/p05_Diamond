@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace p05_Diamond
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+            int dotsSide = n - 1;
+            int dotsInside = n * 3;
+            int dotsSideDown = 1;
+            int dotsInsideDown = n * 5 - 4;
+
+            Console.WriteLine(repeatStr(".", n) + repeatStr("*", n * 3) + repeatStr(".", n));
+
+            for (int i = 0; i < n - 1; i++)
+            {
+                Console.WriteLine(repeatStr(".", dotsSide) + "*" + repeatStr(".", dotsInside) + "*" + repeatStr(".", dotsSide));
+                dotsSide--;
+                dotsInside += 2;
+            }
+
+            Console.WriteLine(repeatStr("*", n * 5));
+
+            for (int i = 0; i < n * 2; i++)
+            {
+                Console.WriteLine(repeatStr(".", dotsSideDown) + "*" + repeatStr(".", dotsInsideDown) + "*" + repeatStr(".", dotsSideDown));
+                dotsSideDown++;
+                dotsInsideDown -= 2;
+            }
+
+            Console.WriteLine(repeatStr(".", n * 2 + 1) + repeatStr("*", n - 2) + repeatStr(".", n * 2 + 1));
+        }
+        private static string repeatStr(string text, int count)
+        {
+            string outputText = "";
+
+            for (int i = 0; i < count; i++)
+            {
+                outputText = outputText + text;
+            }
+            return outputText;
+        }
+    }
+}
