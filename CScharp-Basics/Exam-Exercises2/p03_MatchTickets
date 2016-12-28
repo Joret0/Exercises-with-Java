@@ -1,0 +1,63 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace p03_MatchTickets
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double money = double.Parse(Console.ReadLine());
+            string typeTicket = Console.ReadLine().ToLower();
+            int people = int.Parse(Console.ReadLine());
+
+            double transport = 0.0;
+
+            if (people < 5)
+            {
+                transport = money * 0.75;
+            }
+            else if (people > 4 && people < 10)
+            {
+                transport = money * 0.60;
+            }
+            else if (people > 9 && people < 25)
+            {
+                transport = money * 0.50;
+            }
+            else if (people > 24 && people < 50)
+            {
+                transport = money * 0.40;
+            }
+            else if (people > 49)
+            {
+                transport = money * 0.25;
+            }
+
+            double price = 0.0;
+
+            if (typeTicket == "vip")
+            {
+                price = 499.99;
+            }
+            else
+            {
+                price = 249.99;
+            }
+
+            if (money >= transport + price * people)
+            {
+                double difference1 = money - transport - (price * people);
+                Console.WriteLine("Yes! You have {0:f2} leva left.", difference1);
+            }
+            else
+            {
+                double difference2 = (transport + (price * people)) - money;
+                Console.WriteLine("Not enough money! You need {0:f2} leva.", difference2);
+            }
+        }
+    }
+}
