@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace p02_TransportPrice
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+            string time = Console.ReadLine();
+            double tax = 0;
+            double money = 0;
+
+            if (n < 20)
+            {
+                if (time == "day")
+                {
+                    tax = 0.79;
+                }
+                else
+                {
+                    tax = 0.90;
+                }
+                money = n * tax + 0.70;
+                Console.WriteLine(money);
+            }
+            else if (n > 19 && n < 100)
+            {
+                tax = 0.09;
+                money = n * tax;
+                Console.WriteLine(money);
+            }
+            else if (n >= 100)
+            {
+                tax = 0.06;
+                money = n * tax;
+                Console.WriteLine(money);
+            }
+        }
+    }
+}
