@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace p05_Stop
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+            int dotUp = n;
+            int underDashesUp = n * 2 - 1;
+            int dotsDown = 0;
+            int underDashesDown = n * 4 - 1;
+            
+
+            Console.WriteLine(repeatStr(".", n + 1) + repeatStr("_", n * 2 + 1) + repeatStr(".", n + 1));
+
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine(repeatStr(".", dotUp) + "//" + repeatStr("_", underDashesUp) + "\\\\" + repeatStr(".", dotUp));
+                dotUp--;
+                underDashesUp += 2;
+            }
+
+            Console.WriteLine("//" + repeatStr("_", n * 2 - 3) + "STOP!" + repeatStr("_", n * 2 - 3) + "\\\\");
+
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine(repeatStr(".", dotsDown) + "\\\\" + repeatStr("_", underDashesDown) + "//" + repeatStr(".", dotsDown));
+                dotsDown++;
+                underDashesDown -= 2;
+            }
+        }
+
+        public static string repeatStr(string text, int count)
+        {
+            string outputText = "";
+            for (int i = 0; i < count; i++)
+            {
+                outputText = outputText + text;
+            }
+            return outputText;
+        }
+    }
+}
