@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace p01_VegetableMarket
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double vegetablePrice = double.Parse(Console.ReadLine());
+            double fruitsPrice = double.Parse(Console.ReadLine());
+            double vegetableKg = double.Parse(Console.ReadLine());
+            double fruitsKg = double.Parse(Console.ReadLine());
+
+            double fruits = fruitsPrice * fruitsKg;
+            double vegetable = vegetablePrice * vegetableKg;
+
+            double total = (fruits + vegetable) / 1.94;
+
+            Console.WriteLine(total);
+        }
+    }
+}
