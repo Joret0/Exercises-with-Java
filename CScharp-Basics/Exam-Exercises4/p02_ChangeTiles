@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace p02_ChangeTiles
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double money = double.Parse(Console.ReadLine());
+            double widthFloor = double.Parse(Console.ReadLine());
+            double lenghtFloor = double.Parse(Console.ReadLine());
+            double sideTriangle = double.Parse(Console.ReadLine());
+            double heightTriangle = double.Parse(Console.ReadLine());
+            double priceTile = double.Parse(Console.ReadLine());
+            double moneyForBuilder = double.Parse(Console.ReadLine());
+
+            double floorArea = widthFloor * lenghtFloor;
+            double tileArea = (sideTriangle * heightTriangle) / 2;
+            double tilesNeeded = Math.Ceiling(floorArea / tileArea) + 5;
+            double totalSum = tilesNeeded * priceTile + moneyForBuilder;
+
+            if (money >= totalSum)
+            {
+                double difference1 = money - totalSum;
+                Console.WriteLine("{0:f2} lv left.",difference1);
+            }
+            else
+            {
+                double difference2 = totalSum - money;
+                Console.WriteLine("You'll need {0:f2} lv more.", difference2);
+            }
+        }
+    }
+}
