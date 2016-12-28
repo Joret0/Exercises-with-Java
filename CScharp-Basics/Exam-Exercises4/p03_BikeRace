@@ -1,0 +1,54 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace p03_BikeRace
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int junior = int.Parse(Console.ReadLine());
+            int senior = int.Parse(Console.ReadLine());
+            string trace = Console.ReadLine().ToLower();
+
+            double priceJunior = 0.00;
+            double priceSenior = 0.00;
+
+            switch (trace)
+            {
+                case "trail":
+                    priceJunior = 5.50;
+                    priceSenior = 7.00;
+                    break;
+                case "cross-country":
+                    if (junior + senior >= 50)
+                    {
+                        priceJunior = 8.00 - (8.00 * 0.25);
+                        priceSenior = 9.50 - (9.50 * 0.25);
+                    }
+                    else
+                    {
+                        priceJunior = 8.00;
+                        priceSenior = 9.50;
+                    }
+                    break;
+                case "downhill":
+                    priceJunior = 12.25;
+                    priceSenior = 13.75;
+                    break;
+                case "road":
+                    priceJunior = 20.00;
+                    priceSenior = 21.50;
+                    break;
+                default:
+                    break;
+            }
+            double sum = (junior * priceJunior) + (senior * priceSenior);
+            double leftmoney = sum - (sum * 0.05);
+            Console.WriteLine("{0:f2}", leftmoney);
+        }
+    }
+}
