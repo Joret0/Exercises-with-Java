@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace p02_Pets
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int days = int.Parse(Console.ReadLine());
+            int foodKg = int.Parse(Console.ReadLine());
+            double dogFoodPerDayKg = double.Parse(Console.ReadLine());
+            double catFoodPerDayKg = double.Parse(Console.ReadLine());
+            double tortoiseFoodPerDayGr = double.Parse(Console.ReadLine());
+
+            double dogFood = days * dogFoodPerDayKg;
+            double catFood = days * catFoodPerDayKg;
+            double tortoiseFood = days * (tortoiseFoodPerDayGr / 1000.0);
+            double totalFood = dogFood + catFood + tortoiseFood;
+
+            if (foodKg >= totalFood)
+            {
+                double difference1 = Math.Floor(foodKg - totalFood);
+                Console.WriteLine("{0} kilos of food left.", difference1);
+            }
+            else
+            {
+                double difference2 = Math.Ceiling(totalFood - foodKg);
+                Console.WriteLine("{0} more kilos of food are needed.", difference2);
+            }
+        }
+    }
+}
