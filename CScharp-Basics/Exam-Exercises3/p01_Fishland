@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace p01_Fishland
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double priceSkumria = double.Parse(Console.ReadLine());
+            double priceCaca = double.Parse(Console.ReadLine());
+            double palmudKg = double.Parse(Console.ReadLine());
+            double salfidKg = double.Parse(Console.ReadLine());
+            double midiKg = double.Parse(Console.ReadLine());
+
+            double sumPalmud = (priceSkumria + (priceSkumria * 0.60)) * palmudKg;
+            double sumSafrid = (priceCaca + (priceCaca * 0.80)) * salfidKg;
+            
+            double sumMidi = midiKg * 7.50;
+            double totalSum = sumMidi + sumSafrid + sumPalmud;
+
+            Console.WriteLine("{0:f2}", totalSum);
+
+        }
+    }
+}
