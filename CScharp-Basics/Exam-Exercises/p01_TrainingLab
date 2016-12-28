@@ -1,0 +1,22 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace p01_TrainingLab
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double length = double.Parse(Console.ReadLine());
+            double width = double.Parse(Console.ReadLine());
+
+            double deskRow = ((width * 100) - 100) / 70;
+            double rows = (length * 100) / 120;
+            int places = (int)deskRow * (int)rows - 3;
+            Console.WriteLine(places);
+        }
+    }
+}
