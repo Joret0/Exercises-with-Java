@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace p05_Axe
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+            int leftDashes = n * 3;
+            int dashesMiddleUp = 0;
+            int rightDashesUp = n * 2 - 2;
+            int middleDashesDown = n - 1;
+            int rightDashesDown = n - 1;
+
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine(repeatStr("-", leftDashes) + "*" + repeatStr("-", dashesMiddleUp) + "*" + repeatStr("-", rightDashesUp));
+                rightDashesUp--;
+                dashesMiddleUp++;
+            }
+
+            for (int i = 0; i < n / 2; i++)
+            {
+                Console.WriteLine(repeatStr("*", leftDashes + 1) + repeatStr("-", n - 1) + "*" + repeatStr("-", n - 1));
+            }
+
+            for (int i = 0; i < n / 2 - 1; i++)
+            {
+                Console.WriteLine(repeatStr("-", leftDashes) + "*" + repeatStr("-", middleDashesDown) + "*" + repeatStr("-", rightDashesDown));
+                leftDashes--;
+                middleDashesDown += 2;
+                rightDashesDown--;
+            }
+            Console.WriteLine(repeatStr("-", leftDashes) + repeatStr("*", middleDashesDown + 2) + repeatStr("-", rightDashesDown));
+        }
+        public static string repeatStr(string text, int count)
+        {
+            string outputText = "";
+            for (int i = 0; i < count; i++)
+            {
+                outputText = outputText + text;
+            }
+            return outputText;
+        }
+    }
+}
