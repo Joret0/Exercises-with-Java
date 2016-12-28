@@ -1,0 +1,58 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace p03_Adventure
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double money = double.Parse(Console.ReadLine());
+            string season = Console.ReadLine().ToLower();
+            string place = "";
+            string hous = "";
+            double budjet = 0.0;
+
+            if (money <= 100)
+            {
+                place = "Bulgaria";
+                if (season == "summer")
+                {
+                    hous = "Camp";
+                    budjet = money * 0.30;
+                }
+                else
+                {
+                    hous = "Hotel";
+                    budjet = money * 0.70;
+                }
+            }
+            else if (money > 100 && money <= 1000)
+            {
+                place = "Balkans";
+                if (season == "summer")
+                {
+                    hous = "Camp";
+                    budjet = money * 0.40;
+                }
+                else
+                {
+                    hous = "Hotel";
+                    budjet = money * 0.80;
+                }
+            }
+            else
+            {
+                place = "Europe";
+                hous = "Hotel";
+                budjet = money * 0.90;
+            }
+
+            Console.WriteLine("Somewhere in {0}", place);
+            Console.WriteLine("{0} - {1:f2}", hous, budjet);
+        }
+    }
+}
