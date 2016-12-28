@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SmartLily
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int years = int.Parse(Console.ReadLine());
+            double washingMashine = double.Parse(Console.ReadLine());
+            double toyMoney = double.Parse(Console.ReadLine());
+
+            double birthDayMoney = 10;
+            double toySalles = 0;
+            double savedMoney = 0;
+
+            for (int i = 1; i <= years; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    savedMoney += birthDayMoney;
+                    savedMoney -= 1;
+                    birthDayMoney += 10;
+                }
+                else
+                {
+                    toySalles += toyMoney;
+                }
+            }
+
+            double allSavedMoney = savedMoney + toySalles;
+            double difference = allSavedMoney - washingMashine;
+
+            if (difference >= 0)
+            {
+                Console.WriteLine("Yes! {0:f2}", difference);
+            }
+            else
+            {
+                Console.WriteLine("No! {0:f2}", Math.Abs(difference));
+            }
+        }
+    }
+}
