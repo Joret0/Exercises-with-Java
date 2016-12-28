@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace p01_Distance
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double speed = double.Parse(Console.ReadLine());
+            double firstTime = double.Parse(Console.ReadLine());
+            double secondTime = double.Parse(Console.ReadLine());
+            double thirdTime = double.Parse(Console.ReadLine());
+
+            firstTime /= 60.0;
+            secondTime /= 60.0;
+            thirdTime /= 60.0;
+
+            double firstDistanceSpeep = speed * firstTime;
+            double secondSpeed = (speed + (speed * 0.10));
+            double secondDistanceSpeed = secondSpeed * secondTime;
+            double thirdDistanceSpeed = (secondSpeed - (secondSpeed * 0.05)) * thirdTime;
+            double total = firstDistanceSpeep + secondDistanceSpeed + thirdDistanceSpeed;
+
+            Console.WriteLine("{0:f2}", total);
+
+
+        }
+    }
+}
