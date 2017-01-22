@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace pr11ConvertSpeedUnits
+{
+    class ConvertSpeedUnits
+    {
+        static void Main(string[] args)
+        {
+            float meters = float.Parse(Console.ReadLine());
+            float hours = float.Parse(Console.ReadLine());
+            float minutes = float.Parse(Console.ReadLine());
+            float seconds = float.Parse(Console.ReadLine());
+            
+            float metersPerSecond = meters / ((hours * 60) * 60 + (minutes * 60) + seconds);
+            float kilometersPerHour = (meters / 1000) / (hours + (minutes / 60) + (seconds / 60) / 60);
+            float milesPerHour = (meters / 1609) / (hours + (minutes / 60) + (seconds / 60) / 60);
+
+            Console.WriteLine(metersPerSecond);
+            Console.WriteLine(kilometersPerHour);
+            Console.WriteLine(milesPerHour);
+        }
+    }
+}
