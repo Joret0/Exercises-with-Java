@@ -1,0 +1,19 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace pr06StringsAndObjects
+{
+    class StringsAndObjects
+    {
+        static void Main(string[] args)
+        {
+            string word = Console.ReadLine();
+            string word2 = Console.ReadLine();
+            string word3 = word + " " + word2;
+            Console.WriteLine(word3);
+        }
+    }
+}
