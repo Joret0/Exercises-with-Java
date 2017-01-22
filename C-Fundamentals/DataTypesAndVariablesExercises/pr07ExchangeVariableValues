@@ -1,0 +1,22 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace pr07ExchangeVariableValues
+{
+    class ExchangeVariableValues
+    {
+        static void Main(string[] args)
+        {
+            int num = int.Parse(Console.ReadLine());
+            int num2 = int.Parse(Console.ReadLine());
+            Console.WriteLine($"Before:\na = {num}\nb = {num2}");
+            int tempNum = num;
+            num = num2;
+            num2 = tempNum;
+            Console.WriteLine($"After:\na = {num}\nb = {num2}");
+        }
+    }
+}
