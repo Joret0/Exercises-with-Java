@@ -1,0 +1,18 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace pr02CircleAreaPrecision12
+{
+    class Pr02CircleAreaPrecision12
+    {
+        static void Main(string[] args)
+        {
+            double input = double.Parse(Console.ReadLine());
+            double radius = Math.PI * input * input;
+            Console.WriteLine("{0:f12}", radius);
+        }
+    }
+}
