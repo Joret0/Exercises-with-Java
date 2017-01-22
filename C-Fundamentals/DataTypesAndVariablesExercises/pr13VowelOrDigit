@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace pr13VowelOrDigit
+{
+    class VowelOrDigit
+    {
+        static void Main(string[] args)
+        {
+            char n = char.Parse(Console.ReadLine());
+
+            bool isVowel = n == 'a' || n == 'e' || n == 'u' || n == 'o' || n == 'y' || n == 'i';
+
+            if (isVowel)
+            {
+                Console.WriteLine("vowel");
+            }
+            else if (char.IsNumber(n))
+            {
+                Console.WriteLine("digit");
+            }
+            else
+            {
+                Console.WriteLine("other");
+            }
+        }
+    }
+}
