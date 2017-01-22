@@ -1,0 +1,105 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace pr18DifferentIntegersSize
+{
+    class DifferentIntegersSize
+    {
+        static void Main(string[] args)
+        {
+            bool canFit = false;
+            string num = Console.ReadLine();
+            string message = "";
+            
+            try
+            {
+                sbyte sbyteNum = sbyte.Parse(num);
+                message += "* sbyte\n";
+                canFit = true;
+            }
+            catch (Exception)
+            {
+                
+            }
+
+            try
+            {
+                byte byteNum = byte.Parse(num);
+                message += "* byte\n";
+                canFit = true;
+            }
+            catch (Exception)
+            {
+
+            }
+
+            try
+            {
+                short shortNum = short.Parse(num);
+                message += "* short\n";
+                canFit = true;
+            }
+            catch (Exception)
+            {
+                
+            }
+
+            try
+            {
+                ushort ushortNum = ushort.Parse(num);
+                message += "* ushort\n";
+                canFit = true;
+            }
+            catch (Exception)
+            {
+                
+            }
+
+            try
+            {
+                int intNum = int.Parse(num);
+                message += "* int\n";
+                canFit = true;
+            }
+            catch (Exception)
+            {
+                
+            }
+
+            try
+            {
+                uint uintNum = uint.Parse(num);
+                message += "* uint\n";
+                canFit = true;
+            }
+            catch (Exception)
+            {
+                
+            }
+
+            try
+            {
+                long longNum = long.Parse(num);
+                message += "* long\n";
+                canFit = true;
+            }
+            catch (Exception)
+            {
+                
+            }
+
+            if (canFit)
+            {
+                Console.WriteLine("{0} can fit in:", num);
+                Console.WriteLine(message);
+            }
+            else
+            {
+                Console.WriteLine("{0} can't fit in any type", num);
+            }
+        }
+    }
+}
