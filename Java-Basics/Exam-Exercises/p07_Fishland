@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class p01_Fishland {
+    public static void main(String[] args) {
+        Scanner console = new Scanner(System.in);
+
+        double scumriaPrice = Double.parseDouble(console.nextLine());
+        double cacaPrice = Double.parseDouble(console.nextLine());
+        double palmudKg = Double.parseDouble(console.nextLine());
+        double safridKg = Double.parseDouble(console.nextLine());
+        int midiKg = Integer.parseInt(console.nextLine());
+
+        double palmudPrice = (scumriaPrice * 0.60) + scumriaPrice;
+        double safridPrice = (cacaPrice * 0.80) + cacaPrice;
+        double midiPrice = 7.50;
+
+        double sumPalmud = palmudKg * palmudPrice;
+        double sumSafrid = safridKg * safridPrice;
+        double sumMidi = midiKg * midiPrice;
+
+        double sumNeedIt = sumPalmud + sumSafrid + sumMidi;
+
+        System.out.printf("%.02f%n", sumNeedIt);
+    }
+}

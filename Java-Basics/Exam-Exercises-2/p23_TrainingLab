@@ -1,0 +1,16 @@
+import java.util.Scanner;
+
+public class TrainingLab {
+    public static void main(String[] args) {
+        Scanner console = new Scanner(System.in);
+
+        double w = Double.parseDouble(console.nextLine());
+        double h = Double.parseDouble(console.nextLine());
+
+        double col = ((h * 100) - 100) / 70;
+        double row = ((w * 100) / 120);
+        int places = (int)col * (int)row - 3;
+
+        System.out.println(places);
+    }
+}

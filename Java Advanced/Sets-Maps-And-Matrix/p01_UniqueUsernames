@@ -1,0 +1,18 @@
+import java.util.LinkedHashSet;
+import java.util.Scanner;
+
+public class p01_UniqueUsernames {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        LinkedHashSet<String> set = new LinkedHashSet<>();
+        long n = Long.parseLong(scanner.nextLine());
+
+        for (int i = 0; i < n; i++) {
+            set.add(scanner.nextLine());
+        }
+        for (String user : set) {
+            System.out.println(user);
+        }
+    }
+}

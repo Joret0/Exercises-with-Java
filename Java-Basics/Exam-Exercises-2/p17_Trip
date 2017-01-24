@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class Trip {
+    public static void main(String[] args) {
+        Scanner console = new Scanner(System.in);
+
+        double budget = Double.parseDouble(console.nextLine());
+        String season = console.nextLine().toLowerCase();
+        double moneyForSleeping = 0;
+        String place = "";
+        String house = "";
+
+        if (budget <= 100){
+            if (season.equals("summer")){
+                moneyForSleeping = (budget / 100) * 30;
+                house = "Camp";
+            } else {
+                moneyForSleeping = (budget / 100) * 70;
+                house = "Hotel";
+            }
+            place = "Bulgaria";
+        } else if (budget <= 1000){
+            if (season.equals("summer")){
+                moneyForSleeping = (budget / 100) * 40;
+                house = "Camp";
+            } else {
+                moneyForSleeping = (budget / 100) * 80;
+                house = "Hotel";
+            }
+            place = "Balkans";
+        } else if (budget > 1000){
+            moneyForSleeping = (budget / 100) * 90;
+            house = "Hotel";
+            place = "Europe";
+        }
+        System.out.printf("Somewhere in %s%n", place);
+        System.out.printf("%s - %.02f%n", house, moneyForSleeping);
+    }
+}

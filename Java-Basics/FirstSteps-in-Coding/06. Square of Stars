@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class p6_SquareOfStars {
+    public static void main(String... args) {
+        Scanner cs = new Scanner(System.in);
+
+        int numOfRaws = Integer.parseInt(cs.nextLine());
+
+        for (int a = 1; a <= numOfRaws; a++)
+            System.out.print("*");
+            System.out.println();
+        for (int row =  1; row <= numOfRaws - 2; row++)
+        {
+            System.out.print("*");
+            for (int b = 1; b <= numOfRaws - 2; b++)
+                System.out.print(" ");
+                System.out.print("*");
+                System.out.println();
+        }
+        for (int a = 1; a <= numOfRaws; a++)
+            System.out.print("*");
+            System.out.println();
+    }
+}

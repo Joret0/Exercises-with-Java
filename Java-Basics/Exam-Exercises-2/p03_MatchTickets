@@ -1,0 +1,96 @@
+import java.util.Scanner;
+
+public class p03_MatchTickets {
+    public static void main(String[] args) {
+        Scanner console = new Scanner(System.in);
+
+        double budget = Double.parseDouble(console.nextLine());
+        String categoryTicket = console.nextLine().toLowerCase();
+        int people = Integer.parseInt(console.nextLine());
+
+        double transport = 0;
+        double moneyForTickets = 0;
+        double moneyLeft = 0;
+
+        if (people > 0 && people < 5){
+
+            transport = budget * 0.75;
+            moneyForTickets = budget - transport;
+
+            if (categoryTicket.equals("vip")){
+
+                moneyLeft = moneyForTickets - (people * 499.99);
+
+            } else {
+
+                moneyLeft = moneyForTickets - (people * 249.99);
+
+            }
+        } else if (people > 4 && people < 10){
+
+            transport = budget * 0.60;
+            moneyForTickets = budget - transport;
+
+            if (categoryTicket.equals("vip")){
+
+                moneyLeft = moneyForTickets - (people * 499.99);
+
+            } else {
+
+                moneyLeft = moneyForTickets - (people * 249.99);
+
+            }
+        } else if (people > 9 && people < 25){
+
+            transport = budget * 0.50;
+            moneyForTickets = budget - transport;
+
+            if (categoryTicket.equals("vip")){
+
+                moneyLeft = moneyForTickets - (people * 499.99);
+
+            } else {
+
+                moneyLeft = moneyForTickets - (people * 249.99);
+
+            }
+        } else if (people > 24 && people < 50){
+
+            transport = budget * 0.40;
+            moneyForTickets = budget - transport;
+
+            if (categoryTicket.equals("vip")){
+
+                moneyLeft = moneyForTickets - (people * 499.99);
+
+            } else {
+
+                moneyLeft = moneyForTickets - (people * 249.99);
+
+            }
+        } else  if (people > 49){
+
+            transport = budget * 0.25;
+            moneyForTickets = budget - transport;
+
+            if (categoryTicket.equals("vip")){
+
+                moneyLeft = moneyForTickets - (people * 499.99);
+
+            } else {
+
+                moneyLeft = moneyForTickets - (people * 249.99);
+
+            }
+        }
+        if (moneyLeft >= 0){
+
+            System.out.printf("Yes! You have %.2f leva left.%n", moneyLeft);
+
+        } else {
+
+            System.out.printf("Not enough money! You need %.2f leva.", Math.abs(moneyLeft));
+
+        }
+    }
+}

@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class OnTimeForTheExam {
+    public static void main(String[] args) {
+        Scanner console = new Scanner(System.in);
+
+        int hourExam = Integer.parseInt(console.nextLine());
+        int minutesExam = Integer.parseInt(console.nextLine());
+        int hourArrive = Integer.parseInt(console.nextLine());
+        int minutesArrive = Integer.parseInt(console.nextLine());
+
+        int allMinutesExam = hourExam * 60 + minutesExam;
+        int allMinutesArrive = hourArrive * 60 + minutesArrive;
+        int difference = allMinutesExam - allMinutesArrive;
+        int difference2 = allMinutesArrive - allMinutesExam;
+
+        if (allMinutesExam >= allMinutesArrive){
+            if (difference > 0 && difference <= 30){
+                System.out.println("On time");
+                System.out.printf("%s minutes before the start%n", difference);
+            } else if ( difference >= 60){
+                System.out.println("Early");
+                System.out.printf("%s:%02d hours before the start%n", difference / 60, difference % 60);
+            } else if (difference == 0){
+                System.out.println("On time");
+            } else if (difference > 30 && difference < 60){
+                System.out.println("Early");
+                System.out.printf("%s minutes before the start%n", difference);
+            }
+        } else {
+            if (difference2 < 60 ){
+                System.out.println("Late");
+                System.out.printf("%s minutes after the start%n", difference2);
+            } else {
+                System.out.println("Late");
+                System.out.printf("%s:%02d hours after the start%n", difference2 / 60, difference2 % 60);
+            }
+        }
+    }
+}

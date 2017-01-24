@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+public class p04_SoftUniCamp {
+    public static void main(String[] args) {
+        Scanner console = new Scanner(System.in);
+
+        int groups = Integer.parseInt(console.nextLine());
+        double allPeople = 0;
+        double car = 0;
+        double microbus = 0;
+        double smallBus = 0;
+        double bus = 0;
+        double train = 0;
+        String str = "%";
+
+        for (int i = 0; i < groups; i++) {
+            int people = Integer.parseInt(console.nextLine());
+            allPeople += people;
+            if (people < 6){
+                car += people;
+            } else if (people > 5 && people < 13){
+                microbus += people;
+            } else if (people > 12 && people < 26){
+                smallBus += people;
+            } else if (people > 25 && people < 41){
+                bus += people;
+            } else if (people > 40){
+                train += people;
+            }
+        }
+        System.out.printf("%.2f%s%n", (car / allPeople) * 100, str);
+        System.out.printf("%.2f%s%n", (microbus / allPeople) * 100, str);
+        System.out.printf("%.2f%s%n", (smallBus / allPeople) * 100, str);
+        System.out.printf("%.2f%s%n", (bus / allPeople) * 100, str);
+        System.out.printf("%.2f%s%n", (train / allPeople) * 100, str);
+    }
+}

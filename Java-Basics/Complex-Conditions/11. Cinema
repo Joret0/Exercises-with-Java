@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class p11_Cinema {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        String typeProjection = scan.nextLine().toLowerCase();
+        double rows = Double.parseDouble(scan.nextLine());
+        double colons = Double.parseDouble(scan.nextLine());
+        double rate = 0.00;
+
+        if (typeProjection.equals("premiere")) {
+            rate = 12.00;
+        } else if (typeProjection.equals("normal")) {
+            rate = 7.50;
+        } else if (typeProjection.equals("discount")) {
+            rate = 5.00;
+        }
+
+        double incomes = rows * colons * rate;
+
+        System.out.printf("%.2f leva", incomes);
+    }
+}

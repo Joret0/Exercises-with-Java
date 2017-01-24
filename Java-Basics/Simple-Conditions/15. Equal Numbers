@@ -1,0 +1,17 @@
+import java.util.Scanner;
+
+public class p15_EqualNumbers {
+    public static void main(String[] args) {
+        Scanner cs = new Scanner(System.in);
+
+        double a = Double.parseDouble(cs.nextLine());
+        double b = Double.parseDouble(cs.nextLine());
+        double c = Double.parseDouble(cs.nextLine());
+
+        if (a == b & b == c){
+            System.out.println("yes");
+        } else {
+            System.out.println("no");
+        }
+    }
+}

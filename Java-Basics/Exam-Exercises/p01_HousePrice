@@ -1,0 +1,20 @@
+import java.util.Scanner;
+
+public class p01_HousePrice {
+    public static void main(String[] args) {
+        Scanner console = new Scanner(System.in);
+
+        double smallestRoom = Double.parseDouble(console.nextLine());
+        double kitchen = Double.parseDouble(console.nextLine());
+        double priceKm = Double.parseDouble(console.nextLine());
+
+        double bathroom = smallestRoom / 2;
+        double secondRoom = smallestRoom * 0.1 + smallestRoom;
+        double thirdRoom = secondRoom * 0.1 + secondRoom;
+
+        double house = smallestRoom + kitchen + bathroom + secondRoom + thirdRoom;
+        double priceHouse = (house * 0.05 + house) * priceKm;
+
+        System.out.printf("%.2f%n", priceHouse);
+    }
+}

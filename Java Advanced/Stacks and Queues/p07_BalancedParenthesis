@@ -1,0 +1,43 @@
+import java.util.ArrayDeque;
+import java.util.Scanner;
+
+public class p07_BalancedParenthesis {
+    public static void main(String[] args) {
+        Scanner console = new Scanner(System.in);
+
+        String input = console.nextLine().trim();
+        ArrayDeque<Character> stack = new ArrayDeque<>();
+
+        boolean hasBalanced = true;
+
+        for (int i = 0; i < input.length(); i++) {
+            char current = input.charAt(i);
+
+            if (current == '(' || current == '{' || current == '['){
+                stack.push(current);
+            } else {
+                if (!stack.isEmpty()){
+                    if (current == ')' && stack.peek() == '('){
+                        stack.pop();
+                    } else if (current == ']' && stack.peek() == '['){
+                        stack.pop();
+                    } else if (current == '}' && stack.peek() == '{'){
+                        stack.pop();
+                    } else {
+                        hasBalanced = false;
+                        break;
+                    }
+                } else {
+                    hasBalanced = false;
+                    break;
+                }
+            }
+        }
+
+        if (hasBalanced){
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+    }
+}

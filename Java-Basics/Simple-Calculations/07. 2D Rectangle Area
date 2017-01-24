@@ -1,0 +1,20 @@
+import java.util.Scanner;
+
+public class p07_2DRectangleArea {
+    public static void main(String[] args) {
+        Scanner console = new Scanner(System.in);
+
+        Double x1 = Double.parseDouble(console.nextLine());
+        Double y1 = Double.parseDouble(console.nextLine());
+        Double x2 = Double.parseDouble(console.nextLine());
+        Double y2 = Double.parseDouble(console.nextLine());
+
+        Double width = Math.max(x1, x2) - Math.min(x1, x2);
+        Double height = Math.max(y1, y2) - Math.min(y1, y2);
+        Double area = width * height;
+        Double perimeter = 2 * (width + height);
+
+        System.out.println(area);
+        System.out.println(perimeter);
+    }
+}

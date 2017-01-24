@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class SmartLily {
+    public static void main(String[] args) {
+        Scanner console = new Scanner(System.in);
+
+        int years = Integer.parseInt(console.nextLine());
+        double washingmashine = Double.parseDouble(console.nextLine());
+        double toyPrice = Integer.parseInt(console.nextLine());
+        int sum = 0;
+        int toys = 0;
+        int bonus = 10;
+
+        for (int i = 1; i <= years; i++) {
+            if (i % 2 == 0){
+
+                sum +=  bonus;
+                sum--;
+                bonus += 10;
+            } else {
+                toys++;
+            }
+        }
+
+        double Money = (sum + (toys * toyPrice)) - washingmashine;
+
+        if (Money >= 0){
+            System.out.printf("Yes! %.2f%n" ,Money);
+        } else {
+            System.out.printf("No! %.2f%n", Math.abs(Money));
+        }
+    }
+}

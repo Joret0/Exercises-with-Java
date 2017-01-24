@@ -1,0 +1,40 @@
+import java.util.LinkedHashMap;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class p13_SrabskoUnleashed {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        String input = "";
+        LinkedHashMap<String, LinkedHashMap<String, Long>> venues = new LinkedHashMap<>();
+        Pattern pattern = Pattern.compile("(.*)\\s@(.*)\\s(\\d+)\\s(\\d+)");
+
+        while (!(input = scanner.nextLine()).equals("End")){
+            Matcher matcher = pattern.matcher(input);
+            if (matcher.find()){
+                String singer = matcher.group(1);
+                String venue = matcher.group(2);
+                long ticketPrice = Long.parseLong(matcher.group(3));
+                long ticketCount = Long.parseLong(matcher.group(4));
+                long money = ticketPrice * ticketCount;
+                if (!venues.containsKey(venue)){
+                    venues.put(venue, new LinkedHashMap<>());
+                }
+                if (!venues.get(venue).containsKey(singer)){
+                    venues.get(venue).put(singer, 0L);
+                }
+                venues.get(venue).put(singer, venues.get(venue).get(singer) + money);
+            }
+        }
+        venues.entrySet().stream().forEach(venue -> {
+            System.out.println(venue.getKey());
+            venue.getValue().entrySet().stream()
+                    .sorted((s1, s2) -> s2.getValue().compareTo(s1.getValue()))
+                    .forEach(singer -> {
+                        System.out.printf("#  %s -> %d%n", singer.getKey(), singer.getValue());
+                    });
+        });
+    }
+}

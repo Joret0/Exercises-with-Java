@@ -1,0 +1,11 @@
+package AbstractFactory.classes;
+
+import AbstractFactory.interfaces.Shape1;
+
+public class Square1 implements Shape1 {
+
+    @Override
+    public void draw() {
+        System.out.println("Inside Square1::draw() method.");
+    }
+}
