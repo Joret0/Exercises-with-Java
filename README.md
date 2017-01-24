@@ -1,2 +1,2 @@
 # SoftuniHomeworks
-Exercises, Labs and Homeworks in C# at Software University
+Exercises, Labs and Homeworks in Java at Software University
