@@ -1,5 +1,0 @@
-package AbstractFactory.interfaces;
-
-public interface Shape1 {
-    void draw();
-}
