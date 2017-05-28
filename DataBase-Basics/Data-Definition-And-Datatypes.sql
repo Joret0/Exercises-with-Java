@@ -32,6 +32,11 @@ VALUES (1, 'Kevin', 22, 1),
 
 TRUNCATE TABLE minions
 
+#Problem 6
+
+DROP TABLE minions;
+DROP TABLE towns;
+
 #Problem 7
 -- 
 -- 
