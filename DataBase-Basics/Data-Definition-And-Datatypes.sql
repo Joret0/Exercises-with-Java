@@ -74,6 +74,12 @@ CREATE TABLE users
  ('Ivan', 'password', NULL, CURDATE(), 1),
  ('Angel', 'password', NULL, CURDATE(), 0),
  ('Nasko', 'password', NULL, CURDATE(), 1);
+ 
+#Problem 9
+
+ALTER TABLE users
+DROP PRIMARY KEY,
+ADD CONSTRAINT pk_users PRIMARY KEY (`id`, `username`);
 
 #Problem 13
 
