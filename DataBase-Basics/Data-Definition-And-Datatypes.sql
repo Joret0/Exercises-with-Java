@@ -1,12 +1,12 @@
 #Problem 2
 CREATE TABLE minions
 (`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-`name` VARCHAR(50),
-`age` INT);
+`name` VARCHAR(50) NOT NULL,
+`age` INT NOT NULL);
 
 CREATE TABLE towns
 (`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-`name` VARCHAR(50));
+`name` VARCHAR(50) NOT NULL);
 
 #Problem 4
 
