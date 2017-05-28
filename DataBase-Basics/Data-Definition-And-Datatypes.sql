@@ -1,4 +1,5 @@
 #Problem 2
+
 CREATE TABLE minions
 (`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 `name` VARCHAR(50) NOT NULL,
@@ -7,6 +8,13 @@ CREATE TABLE minions
 CREATE TABLE towns
 (`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 `name` VARCHAR(50) NOT NULL);
+
+#Problem 3
+
+ALTER TABLE minions
+  ADD COLUMN `town_id` INT,
+ADD CONSTRAINT fk_minions_towns FOREIGN KEY(town_id)
+  REFERENCES towns(id);
 
 #Problem 4
 
