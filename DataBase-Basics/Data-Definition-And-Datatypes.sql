@@ -58,25 +58,22 @@ CREATE TABLE people
  ('Nasko', NULL, 6.66, 11.02, 'm', CURDATE(), 'Some text'); 
 
 #Problem 8
--- 
--- 
 
-CREATE TABLE users (
-id INT NOT NULL AUTO_INCREMENT,
-username VARCHAR(30) NOT NULL,
-password VARCHAR(26) NOT NULL,
-profile_picture MEDIUMBLOB,
-last_login_time DATE ,
-is_deleted TINYINT(1),
-PRIMARY KEY (id));
+CREATE TABLE users
+(`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`username` VARCHAR(30) NOT NULL,
+`password` VARCHAR(26) NOT NULL,
+`profile_picture` BLOB,
+`last_login_time` DATE,
+`is_deleted` TINYINT(1));
 
-INSERT INTO users(username,password,profile_picture,last_login_time,is_deleted)
-VALUES(
-'PESHO', 'parolata',NULL,CURDATE(),1),
-('XXX', 'parolata',NULL,CURDATE(),1),
-('XZCZXCZXCZ', 'parolata',NULL,CURDATE(),0),
-('FDFERE', 'parolata',NULL,CURDATE(),1),
-('GAGAGAGA', 'parolata',NULL,CURDATE(),0);
+ INSERT INTO users(`username`, `password`, `profile_picture`, `last_login_time`, `is_deleted`)
+ VALUES
+ ('Georgi', 'password', NULL, CURDATE(), 0),
+ ('Aneta', 'password', NULL, CURDATE(), 1),
+ ('Ivan', 'password', NULL, CURDATE(), 1),
+ ('Angel', 'password', NULL, CURDATE(), 0),
+ ('Nasko', 'password', NULL, CURDATE(), 1);
 
 #Problem 13
 
