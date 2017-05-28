@@ -1,3 +1,13 @@
+#Problem 2
+CREATE TABLE minions
+(`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`name` VARCHAR(50),
+`age` INT);
+
+CREATE TABLE towns
+(`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`name` VARCHAR(50));
+
 #Problem 4
 
 INSERT INTO towns(id ,name) 
