@@ -38,27 +38,24 @@ DROP TABLE minions;
 DROP TABLE towns;
 
 #Problem 7
--- 
--- 
 
-CREATE TABLE people (
-id INT NOT NULL AUTO_INCREMENT,
-name VARCHAR(200) NOT NULL,
-picture LONGBLOB,
-height DOUBLE ,
-weight DOUBLE ,
-gender ENUM('m', 'f') NOT NULL, 
-birthdate DATE NOT NULL,
-biography LONGTEXT ,
-PRIMARY KEY (id));
+CREATE TABLE people
+(`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`name` VARCHAR(200) NOT NULL,
+`picture` BLOB,
+`height` DOUBLE(10,2),
+`weight` DOUBLE(10,2),
+`gender` ENUM('m','f') NOT NULL,
+`birthdate` DATE NOT NULL,
+`biography` LONGTEXT);
 
-INSERT INTO people(name,picture,height,weight,gender,birthdate,biography)
-VALUES
-('PESHO',NULL,3.4,4.2,'m',CURDATE(),'BB'),
-('PENKA',NULL,3.4,4.2,'f',CURDATE(),'Baaaa'),
-('GANKA',NULL,3.4,4.2,'f',CURDATE(),'BBzfzdfz'),
-('GOSHO',NULL,3.4,4.2,'m',CURDATE(),'BBdzfzdfz'),
-('STAMAT',NULL,3.4,4.2,'m',CURDATE(),'BB');
+ INSERT INTO people(`name`, `picture`, `height`, `weight`, `gender`, `birthdate`, `biography`)
+ VALUES
+ ('Georgi', NULL, 2.22, 7.77, 'm', CURDATE(), 'Some text'),
+ ('Aneta', NULL, 3.33, 8.88, 'f', CURDATE(), 'Some text'),
+ ('Ivan', NULL, 4.44, 9.99, 'm', CURDATE(), 'Some text'),
+ ('Angel', NULL, 5.55, 10.01, 'm', CURDATE(), 'Some text'),
+ ('Nasko', NULL, 6.66, 11.02, 'm', CURDATE(), 'Some text'); 
 
 #Problem 8
 -- 
