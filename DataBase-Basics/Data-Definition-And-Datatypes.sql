@@ -97,8 +97,68 @@ DROP PRIMARY KEY,
 ADD PRIMARY KEY(`id`),
 ADD UNIQUE(`username`);
 
-#Problem 13
+#Problem 12
 
+CREATE TABLE directors
+(`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`director_name` VARCHAR(50) NOT NULL,
+`notes` TEXT);
+
+CREATE TABLE genres
+(`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`genre_name` VARCHAR(50) NOT NULL,
+`notes` TEXT);
+
+CREATE TABLE categories
+(`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`category_name` VARCHAR(50) NOT NULL,
+`notes` TEXT);
+
+CREATE TABLE movies
+(`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`title` VARCHAR(50) NOT NULL,
+`director_id` INT NOT NULL,
+`copyright_year` DATE NOT NULL,
+`length` FLOAT NOT NULL,
+`genre_id` INT NOT NULL,
+`category_id` INT NOT NULL,
+`rating` DOUBLE,
+`notes` TEXT);
+
+ALTER TABLE movies
+ADD CONSTRAINT fk_movies_directors FOREIGN KEY(director_id) REFERENCES `directors`(id),
+ADD CONSTRAINT fk_movies_genres FOREIGN KEY(genre_id) REFERENCES `genres`(id),
+ADD CONSTRAINT fk_movies_categories FOREIGN KEY(category_id) REFERENCES `categories`(id);
+
+INSERT INTO directors(`director_name`, `notes`)
+VALUES ('Georgi', 'Some text'),
+('Ivan', 'Some text'),
+('Aneta', 'Some text'),
+('Daniela', 'Some text'),
+('Petar', 'Some text');
+
+INSERT INTO categories(`category_name`, `notes`)
+VALUES ('Crimi', 'Some text'),
+('Adventure', 'Some text'),
+('Comedy', 'Some text'),
+('Action', 'Some text'),
+('Drama', 'Some text');
+
+INSERT INTO genres(`genre_name`, `notes`)
+VALUES ('Crimi', 'Some text'),
+('Adventure', 'Some text'),
+('Comedy', 'Some text'),
+('Action', 'Some text'),
+('Drama', 'Some text');
+
+INSERT INTO movies(`title`, `director_id`, `copyright_year`, `length`, `genre_id`, `category_id`, `rating`, `notes`)
+VALUES('Movie 1', 1, CURDATE(), 2.22, 2, 3, 10, 'Some text'),
+('Movie 2', 2, CURDATE(), 3.32, 1, 2, 9, 'Some text'),
+('Movie 3', 3, CURDATE(), 4.52, 5, 1, 8, 'Some text'),
+('Movie 4', 4, CURDATE(), 6.72, 4, 5, 7, 'Some text'),
+('Movie 1', 5, CURDATE(), 9.22, 3, 4, 6, 'Some text');
+
+#Problem 13
 
 CREATE TABLE directors 
 (
