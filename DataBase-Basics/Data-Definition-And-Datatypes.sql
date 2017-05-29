@@ -160,62 +160,93 @@ VALUES('Movie 1', 1, CURDATE(), 2.22, 2, 3, 10, 'Some text'),
 
 #Problem 13
 
-CREATE TABLE directors 
-(
-id INT NOT NULL AUTO_INCREMENT,
-director_name VARCHAR(50) NOT NULL,
-notes LONGTEXT,
-PRIMARY KEY(id)
-);
+CREATE TABLE categories
+(`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`category` VARCHAR(50) NOT NULL,
+`daily_rate` DOUBLE(8,2) NOT NULL,
+`weekly_rate` DOUBLE(8,2) NOT NULL,
+`monthly_rate` DOUBLE(8,2) NOT NULL,
+`weekend_rate` DOUBLE(8,2) NOT NULL);
 
-CREATE TABLE genres 
-(
-id INT NOT NULL AUTO_INCREMENT,
-genre_name VARCHAR(50) NOT NULL,
-notes LONGTEXT NULL,
-PRIMARY KEY(id));
+CREATE TABLE cars
+(`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`plate_number` VARCHAR(50) NOT NULL,
+`make` VARCHAR(50) NOT NULL,
+`model` VARCHAR(50) NOT NULL,
+`car_year` DATE NOT NULL,
+`category_id` INT NOT NULL,
+`doors` INT NOT NULL,
+`picture` BLOB,
+`car_condition` TEXT,
+`available` TINYINT(1) NOT NULL);
 
-CREATE TABLE categories 
-(
-id INT NOT NULL AUTO_INCREMENT,
-category_name VARCHAR(50) NOT NULL,
-notes LONGTEXT NULL,
-PRIMARY KEY(id));
+CREATE TABLE employees
+(`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`first_name` VARCHAR(50) NOT NULL,
+`last_name` VARCHAR(50) NOT NULL,
+`title` VARCHAR(50),
+`notes` TEXT);
 
-CREATE TABLE movies 
-(
-id INT NOT NULL AUTO_INCREMENT,
-title VARCHAR(50) NOT NULL,
-director_id VARCHAR(50) NOT NULL,
-copyright_year DATETIME ,
-length INT NOT NULL,
-genre_id INT NOT NULL,
-category_id INT NOT NULL,
-rating INT,
-notes LONGTEXT NULL,
-PRIMARY KEY(id));
+CREATE TABLE customers
+(`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`driver_licence_number` VARCHAR(50) NOT NULL,
+`full_name` VARCHAR(50) NOT NULL,
+`address` TEXT NOT NULL,
+`city` VARCHAR(50) NOT NULL,
+`zip_code` INT NOT NULL,
+`notes` TEXT);
 
-INSERT INTO directors(director_name)
-VALUES ('Pesho'),('goshoo'),('POsho');
-INSERT INTO directors(director_name,notes)
-VALUES ('Kancho','ALALALALALLALAAL'), ('Pesho','BBBBBB');
+CREATE TABLE rental_orders
+(`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`employee_id` INT NOT NULL,
+`customer_id` INT NOT NULL,
+`car_id` INT NOT NULL,
+`car_condition` TEXT NOT NULL,
+`tank_level` VARCHAR(50) NOT NULL,
+`kilometrage_start` INT NOT NULL,
+`kilometrage_end` INT NOT NULL,
+CONSTRAINT chk_kilometers CHECK (`kilometrage_start` <= `kilometrage_end`),
+`total_kilometrage` INT NOT NULL,
+`start_date` DATE NOT NULL,
+`end_date` DATE NOT NULL,
+CONSTRAINT chk_date CHECK (`start_date` <= `end_date`),
+`total_days` INT NOT NULL,
+`rate_applied` DOUBLE(8,2) NOT NULL,
+`tax_rate` DOUBLE(8,2) NOT NULL,
+`order_status` VARCHAR(50) NOT NULL,
+`notes` TEXT);
 
+ALTER TABLE rental_orders
+ADD CONSTRAINT fk_rental_orders_employees FOREIGN KEY(employee_id) REFERENCES `employees`(id),
+ADD CONSTRAINT fk_rental_orders_customers FOREIGN KEY(customer_id) REFERENCES `customers`(id),
+ADD CONSTRAINT fk_rental_orders_cars FOREIGN KEY(car_id) REFERENCES `cars`(id);
+ALTER TABLE cars
+ADD CONSTRAINT fk_categories_cars FOREIGN KEY(category_id) REFERENCES `categories`(id);
 
-INSERT INTO genres(genre_name)
-VALUES ('Pesho'),('POsho'),('goshoo');
-INSERT INTO genres(genre_name,notes)
-VALUES ('Kancho','ALALALALALLALAAL'),('Pesho','BBBBBB');
+INSERT INTO categories (`category`, `daily_rate`, `weekly_rate`, `monthly_rate`, `weekend_rate`)
+VALUES('Crimi', 2.44, 3.55, 5.33, 10.22),
+('Adventure', 5.44, 2.55, 8.33, 11.22),
+('Action', 8.44, 13.55, 25.33, 13.22);
 
-INSERT INTO categories(category_name)
-VALUES('Pesho'),('POsho'), ('Kancho'),('goshoo'),('Pesho');
+INSERT INTO cars (`plate_number`, `make`, `model`, `car_year`, `category_id`, `doors`, `picture`, `car_condition`, `available`)
+VALUES('Some Number', 'Some text', 'BMW', '2009-05-12', 1, 4, NULL, 'Some text', 1),
+('Some Number', 'Some text', 'Mercedes', '2008-06-10', 2, 3, NULL, 'Some text', 1),
+('Some Number', 'Some text', 'VW', '2007-01-08', 3, 5, NULL, 'Some text', 0);
 
-INSERT INTO movies(title,director_id,copyright_year,length,genre_id,category_id)
-VALUES 
-('Star wars',1,NOW(),15,1,1);
-('Star R4',1,NOW(),15,1,1); 
-('Star XXX',1,NOW(),15,1,1);
-('Star RRRR',1,NOW(),15,1,1);
-('Star AFAF',1,NOW(),15,1,1);
+INSERT INTO employees (`first_name`, `last_name`, `title`, `notes`)
+VALUES('Georgi', 'Stalev', 'seller', 'Some text'),
+('Ivan', 'Stalev', 'customer suport', 'Some text'),
+('Aneta', 'Moleva', 'human resurces', 'Some text');
+
+INSERT INTO customers (`driver_licence_number`, `full_name`, `address`, `city`, `zip_code`, `notes`)
+VALUES('Some Number', 'Vladislav Boichev', 'Some address', 'Some city', 123, 'Some text'),
+('Some Number', 'Dimitar Vasilev', 'Some address', 'Some city', 345, 'Some text'),
+('Some Number', 'Yanislav Marinov', 'Some address', 'Some city', 1000, 'Some text');
+
+INSERT INTO rental_orders (`employee_id`, `customer_id`, `car_id`, `car_condition`, `tank_level`, `kilometrage_start`, `kilometrage_end`, `total_kilometrage`, `start_date`, `end_date`, `total_days`, `rate_applied`, `tax_rate`, `order_status`, `notes`)
+VALUES(1, 1, 1, 'Some text', 'EMPTY', 10, 200, 250, '2016-05-05', '2017-05-05', 25, 24.45, 25.44, 'Available', 'Some text'),
+(2, 2, 2, 'Some text', 'EMPTY', 5, 150, 200, '2014-05-05', '2015-05-05', 45, 55.22, 33.33, 'Available', 'Some text'),
+(3, 3, 3, 'Some text', 'EMPTY', 20, 100, 150, '2015-05-05', '2016-05-05', 26, 27.49, 21.42, 'Available', 'Some text');
 
 # Problem 14
 -- 
