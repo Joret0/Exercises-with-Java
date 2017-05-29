@@ -86,6 +86,13 @@ ADD CONSTRAINT pk_users PRIMARY KEY (`id`, `username`);
 ALTER TABLE users
 MODIFY `last_login_time` DATETIME DEFAULT CURRENT_TIMESTAMP;
 
+#Problem 11
+
+ALTER TABLE users
+DROP PRIMARY KEY,
+ADD PRIMARY KEY(`id`),
+ADD UNIQUE(`username`);
+
 #Problem 13
 
 
