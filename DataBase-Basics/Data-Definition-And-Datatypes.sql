@@ -1,3 +1,7 @@
+#Problem 1
+
+CREATE DATABASE minions
+
 #Problem 2
 
 CREATE TABLE minions
