@@ -249,105 +249,107 @@ VALUES(1, 1, 1, 'Some text', 'EMPTY', 10, 200, 250, '2016-05-05', '2017-05-05', 
 (3, 3, 3, 'Some text', 'EMPTY', 20, 100, 150, '2015-05-05', '2016-05-05', 26, 27.49, 21.42, 'Available', 'Some text');
 
 # Problem 14
--- 
--- 
+ 
+CREATE TABLE employees
+(`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`first_name` VARCHAR(50) NOT NULL,
+`last_name` VARCHAR(50) NOT NULL,
+`title` VARCHAR(50) NOT NULL,
+`notes` TEXT);
 
- CREATE TABLE categories
-(
-id INT NOT NULL AUTO_INCREMENT,
-category VARCHAR(50) NOT NULL,
-daily_rate FLOAT DEFAULT 0.0,
-weekly_rate FLOAT DEFAULT 0.0,
-monthly_rate FLOAT DEFAULT 0.0,
-weekend_rate FLOAT DEFAULT 0.0,
-PRIMARY KEY(id));
+CREATE TABLE customers
+(`account_number` VARCHAR(50) NOT NULL PRIMARY KEY,
+`first_name` VARCHAR(50) NOT NULL,
+`last_name` VARCHAR(50) NOT NULL,
+`phone_number` VARCHAR(50) NOT NULL,
+`emergency_name` VARCHAR(50) NOT NULL,
+`emergency_number` VARCHAR(50) NOT NULL,
+`notes` TEXT);
 
-CREATE TABLE cars
-(
-id INT NOT NULL AUTO_INCREMENT,
-plate_number VARCHAR(50) NOT NULL,
-make VARCHAR(50) NOT NULL,
-model VARCHAR(50) NOT NULL,
-car_year DATE,
-category_id INT,
-doors ENUM('2','3','4','5','6','7') NOT NULL,
-picture LONGBLOB NULL ,
-`condition` ENUM('USED','NEW') NOT NULL,
-available ENUM('YES','NO') NOT NULL,
-PRIMARY KEY(id)
-);
+CREATE TABLE room_status
+(`room_status` VARCHAR(50) NOT NULL PRIMARY KEY,
+`notes` TEXT);
 
-CREATE TABLE employees 
-(
-id INT NOT NULL AUTO_INCREMENT,
-first_name VARCHAR(50) NOT NULL,
-last_name VARCHAR(50) NOT NULL,
-title VARCHAR(50) NOT NULL,
-notes LONGTEXT,
-PRIMARY KEY(id));
+CREATE TABLE room_types
+(`room_type` VARCHAR(50) NOT NULL PRIMARY KEY,
+`notes` TEXT);
 
-CREATE TABLE customers 
-(
-id INT NOT NULL AUTO_INCREMENT,
-driver_license_number VARCHAR(50) UNIQUE,
-full_name VARCHAR(50) NOT NULL,
-adress VARCHAR(50) NOT NULL,
-city VARCHAR(50) NOT NULL,
-zip_code VARCHAR(50) NOT NULL,
-notes LONGTEXT,
-PRIMARY KEY(id));
+CREATE TABLE bed_types
+(`bed_type` VARCHAR(50) NOT NULL PRIMARY KEY,
+`notes` TEXT);
 
-CREATE TABLE rental_orders(
-id INT NOT NULL AUTO_INCREMENT,
-employee_id INT,
-customer_id INT,
-car_id INT,
-car_condition ENUM('USED','NEW') NOT NULL,
-tank_level INT NOT NULL,
-kilometrage_start FLOAT NOT NULL DEFAULT 0.0, 
-kilometrage_end FLOAT NOT NULL DEFAULT 0.0,
-total_kilometrage FLOAT NOT NULL DEFAULT 0.0,
-start_date DATETIME,
-end_date DATETIME,
-total_days INT,
-rate_applied FLOAT,
-tax_rate FLOAT,
-order_status ENUM('PENDING','FINISHED') NOT NULL,
-notes LONGTEXT,
-PRIMARY KEY(id)
-);
+CREATE TABLE rooms
+(`room_number` INT NOT NULL PRIMARY KEY,
+`room_type` VARCHAR(50) NOT NULL,
+`bed_type` VARCHAR(50) NOT NULL,
+`rate` INT NOT NULL,
+`room_status` ENUM('AVAILABLE','NOT AVAILABLE') NOT NULL,
+`notes` TEXT);
 
-INSERT INTO categories(category)
-VALUES 
-('Pesho'),
-('Pesho'),
-('Pesho');
+CREATE TABLE payments
+(`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`employee_id` INT NOT NULL,
+`payment_date` DATE NOT NULL,
+`account_number` VARCHAR(50) NOT NULL,
+`first_date_occupied` DATE NOT NULL,
+`last_date_occupied` DATE NOT NULL,
+CONSTRAINT chk_date CHECK (`first_date_occupied` <= `last_date_occupied`),
+`total_days` INT NOT NULL,
+`amount_charged` FLOAT NOT NULL,
+`tax_rate` FLOAT NOT NULL,
+`tax_amount` FLOAT NOT NULL,
+`payment_total` FLOAT NOT NULL,
+`notes` TEXT);
 
+CREATE TABLE occupancies
+(`id` INT NOT NULL PRIMARY KEY  AUTO_INCREMENT,
+`employee_id` INT NOT NULL,
+`date_occupied` DATE NOT NULL,
+`account_number` VARCHAR(50) NOT NULL,
+`room_number` INT NOT NULL,
+`rate_applied` INT NOT NULL,
+`phone_charge` FLOAT NOT NULL,
+`notes` TEXT);
 
-INSERT INTO cars(plate_number,make,model,doors,`condition`,available)
-VALUES 
-('Pppre3','mercedes','clk','5','USED','YES'),
-('ggggg','bmw','320','3','NEW','NO'),
-('434343','MAZDA','323','5','USED','YES');
+INSERT INTO employees (`first_name`, `last_name`, `title`, `notes`)
+VALUES ('Georgi', 'Stalev', 'Customer Suport', 'Some Text'),
+('Aneta', 'Moleva', 'Key Account', 'Some Text'),
+('Ivan', 'Stalev', 'Desk Operational', 'Some Text');
 
-INSERT INTO employees(first_name,last_name,title)
-VALUES
-('pESHO','kIRCHEV','mamut'),
-('KIMI','RAIKONEN','SHAMPOAN'),
-('KICHKA','MINZUHAROVA','STRIPPER');
+INSERT INTO customers (`account_number`, `first_name`, `last_name`, `phone_number`, `emergency_name`, `emergency_number`, `notes`)
+VALUES ('BG01UTFFF1050204020', 'Georgi', 'Stalev', '0888443322', 'Petar Ivanov', '0888229944', 'Some Text'),
+('BG01UTFFF1154254629', 'Aneta', 'Moleva', '0887456222', 'Bogomil Malinov', '0887224444', 'Some Text'),
+('BG01UTFFF7734346723', 'Ivan', 'Stalev', '0886835476', 'Dilian Dimov', '0888749253', 'Some Text');
 
+INSERT INTO room_status (`room_status`, `notes`)
+VALUES ('goood', 'Some Text'),
+('bad', 'Some Text'),
+('silver', 'Some Text');
 
-INSERT INTO customers(full_name,adress,city,zip_code)
-VALUES
-('Encho Enchev','Mongolska street','Manganiq','44444'),
-('Monio Minchev','Geiska street','Bronz','45'),
-('Sasho Sashev','SIKISH','PALEC','44444');
+INSERT INTO room_types (`room_type`, `notes`)
+VALUES ('Double Room', 'Some Text'),
+('Triple Room', 'Some Text'),
+('Single Room', 'Some Text');
 
-INSERT INTO rental_orders(car_condition, tank_level,kilometrage_start,kilometrage_end,total_kilometrage,order_status)
-VALUES
-('USED',5,4,5,5,'PENDING'),
-('USED',5,5,2,5,'PENDING'),
-('USED',5,3,5,1,'PENDING');
+INSERT INTO bed_types (`bed_type`, `notes`)
+VALUES ('Double Bed', 'Some Text'),
+('Single Bed', 'Some Text'),
+('Triple Bed', 'Some Text');
+
+INSERT INTO rooms (`room_number`, `room_type`, `bed_type`, `rate`, `room_status`, `notes`)
+VALUES (22, 'Double Room', 'Single Bed', 10, 'AVAILABLE', 'Some Text'),
+(25, 'Double Room', 'Double Bed', 10, 'NOT AVAILABLE', 'Some Text'),
+(28, 'Single Room', 'Single Bed', 10, 'AVAILABLE', 'Some Text');
+
+INSERT INTO payments (`employee_id`, `payment_date`, `account_number`, `first_date_occupied`, `last_date_occupied`, `total_days`, `amount_charged`, `tax_rate`, `tax_amount`, `payment_total`, `notes`)
+VALUES (1, '2017-02-27', 'BG01UTFFF1050204020', '2017-02-27', '2017-03-15', 18, 100.56, 15.05, 10.56, 119.56, 'Some Text'),
+(1, '2017-02-27', 'BG01UTFFF1154254629', '2017-02-27', '2017-03-15', 15, 116.22, 13.19, 11.76, 133.16, 'Some Text'),
+(1, '2017-02-27', 'BG01UTFFF7734346723', '2017-01-22', '2017-02-11', 20, 110.73, 16.05, 14.56, 122.56, 'Some Text');
+
+INSERT INTO occupancies (`employee_id`, `date_occupied`, `account_number`, `room_number`, `rate_applied`, `phone_charge`, `notes`)
+VALUES (1, '2017-03-15', 'BG01UTFFF1050204020', 23, 10, 2.25, 'Some Text'),
+(2, '2017-03-15', 'BG01UTFFF1154254629', 25, 10, 2.25, 'Some Text'),
+(3, '2017-02-11', 'BG01UTFFF7734346723', 28, 10, 2.25, 'Some Text');
 
 #Problem 15
 -- 
