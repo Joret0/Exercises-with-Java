@@ -352,110 +352,33 @@ VALUES (1, '2017-03-15', 'BG01UTFFF1050204020', 23, 10, 2.25, 'Some Text'),
 (3, '2017-02-11', 'BG01UTFFF7734346723', 28, 10, 2.25, 'Some Text');
 
 #Problem 15
--- 
--- 
 
-CREATE TABLE employees 
-(
-id INT NOT NULL AUTO_INCREMENT,
-first_name VARCHAR(50) NOT NULL,
-last_name VARCHAR(50),
-title VARCHAR(50),
-notes LONGTEXT,
-PRIMARY KEY(id));
+CREATE TABLE towns
+(`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`name` VARCHAR(50) NOT NULL);
 
-CREATE TABLE customers 
-(
-id INT NOT NULL AUTO_INCREMENT,
-account_number VARCHAR(50) NOT NULL UNIQUE,
-first_name VARCHAR(50) ,
-last_name VARCHAR(50) ,
-phone_number VARCHAR(50) ,
-emergency_name VARCHAR(50) ,
-emergency_number VARCHAR(50) ,
-notes LONGTEXT,
-PRIMARY KEY(id));
+CREATE TABLE addresses
+(`id`INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`address_text` TEXT NOT NULL,
+`town_id` INT NOT NULL,
+CONSTRAINT fk_addresses_towns FOREIGN KEY(`town_id`) REFERENCES `towns`(`id`));
 
-CREATE TABLE room_status(
-id INT NOT NULL AUTO_INCREMENT,
-room_status VARCHAR(50) NOT NULL,
-notes LONGTEXT, 
-PRIMARY KEY(id)
-);
+CREATE TABLE departments
+(`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`name` VARCHAR(50) NOT NULL);
 
-CREATE TABLE room_types(
-id INT NOT NULL AUTO_INCREMENT,
-room_type VARCHAR(50) NOT NULL,
-notes LONGTEXT, 
-PRIMARY KEY(id)
-);
-
-CREATE TABLE bed_types(
-id INT NOT NULL AUTO_INCREMENT,
-bed_type VARCHAR(50) NOT NULL,
-notes LONGTEXT, 
-PRIMARY KEY(id)
-);
-
-CREATE TABLE rooms(
-id INT NOT NULL AUTO_INCREMENT,
-room_number VARCHAR(50),
-room_type VARCHAR(50),
-bed_type VARCHAR(50),
-rate FLOAT,
-room_status VARCHAR(50),
-notes LONGTEXT,
-PRIMARY KEY(id));
-
-CREATE TABLE payments (
-id INT NOT NULL AUTO_INCREMENT,
-employee_id INT,
-payment_date DATETIME,
-account_number VARCHAR(50) UNIQUE,
-first_date_occupied DATETIME,
-last_date_occupied DATETIME,
-total_days INT,
-amount_charged FLOAT,
-tax_rate FLOAT,
-tax_amount FLOAT,
-payment_total FLOAT,
-notes LONGTEXT,
-PRIMARY KEY(id));
-
-CREATE TABLE occupancies (
-id INT NOT NULL AUTO_INCREMENT,
-employee_id INT,
-date_occupied DATETIME,
-account_number VARCHAR(50) UNIQUE,
-room_number VARCHAR(50),
-rate_applied FLOAT,
-phone_charge FLOAT,
-notes LONGTEXT,
-PRIMARY KEY(id));
-
-INSERT INTO employees(first_name)
-VALUES('pesho'),('pggesho'),('ggfder');
-
-INSERT INTO customers(account_number)
-VALUES('123'),('1'),('124');
-
-INSERT INTO room_status(room_status)
-VALUES('1'),('1'),('1');
-
-INSERT INTO room_types(room_type)
-VALUES('1'),('1'),('1');
-
-INSERT INTO bed_types(bed_type)
-VALUES('1'),('1'),('1');
-
-INSERT INTO rooms(room_number)
-VALUES('1'),('2'),('3');
-
-INSERT INTO payments(account_number)
-VALUES('12'),('124'),('122');
-
-INSERT INTO occupancies(account_number)
-VALUES('12'),('124'),('122');
+CREATE TABLE employees
+(`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`first_name` VARCHAR(50) NOT NULL,
+`middle_name` VARCHAR(50) NOT NULL,
+`last_name` VARCHAR(50) NOT NULL,
+`job_title` VARCHAR(50) NOT NULL,
+`department_id` INT NOT NULL,
+CONSTRAINT fk_employees_departments FOREIGN KEY(`department_id`) REFERENCES `departments`(`id`),
+`hire_date` DATE NOT NULL,
+`salary` FLOAT NOT NULL,
+`address_id` INT NOT NULL,
+CONSTRAINT fk_employees_addresses FOREIGN KEY (`address_id`) REFERENCES `addresses`(`id`));
 
 #Problem 19
 
