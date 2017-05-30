@@ -401,14 +401,16 @@ SELECT * FROM towns;
 SELECT * FROM departments;
 SELECT * FROM employees;
 
-#Problem 20
+#Problem 19
 
 SELECT * FROM towns
-  ORDER BY name;
+ORDER BY `name`;
+
 SELECT * FROM departments
-  ORDER BY name;
+ORDER BY `name`;
+
 SELECT * FROM employees
-  ORDER BY salary DESC;
+ORDER BY `salary` DESC;
 
 #Problem 21
 
