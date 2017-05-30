@@ -395,7 +395,7 @@ VALUES ('Ivan', 'Ivanov', 'Ivanov', '.NET Developer', 4, '2013-02-01', 3500.00),
 ('Georgi', 'Terziev', 'Ivanov', 'CEO', 2, '2007-12-09', 3000.00),
 ('Peter', 'Pan', 'Pan', 'Intern', 3, '2016-08-28', 599.88);
 
-#Problem 19
+#Problem 18
 
 SELECT * FROM towns;
 SELECT * FROM departments;
