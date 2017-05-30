@@ -423,20 +423,20 @@ ORDER BY `name`;
 SELECT `first_name`, `last_name`, `job_title`, `salary` FROM employees
 ORDER BY `salary` DESC;
   
-#Problem 22
+#Problem 21
 
 UPDATE employees
- SET salary = salary * 1.10;
+SET `salary` = `salary` * 1.10;
 
-SELECT salary FROM employees;
+SELECT `salary` FROM employees;
+
+#Problem 22
+
+UPDATE `payments`
+SET `tax_rate` = `tax_rate` * 0.97;
+
+SELECT `tax_rate` FROM `payments`;
 
 #Problem 23
 
-UPDATE payments
-  SET tax_rate = tax_rate * 0.97;
-
-Select tax_rate from payments;
-
-#Problem 24
-
-DELETE FROM occupancies;
+DELETE FROM `occupancies`;
