@@ -77,9 +77,8 @@ ORDER BY
 	
 #Problem 16
 
-CREATE VIEW v_employees_salaries AS
-SELECT first_name,last_name,salary 
-	FROM employees;
+CREATE VIEW `v_employees_salaries` AS
+SELECT `first_name`, `last_name`, `salary` FROM `employees`
 	
 #Problem 17
 
