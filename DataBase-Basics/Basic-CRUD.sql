@@ -121,9 +121,10 @@ ORDER BY peak_name;
 
 #Problem 23
 
-SELECT country_name,population FROM countries
-WHERE continent_code = 'EU'
-ORDER BY population desc
+SELECT `country_name`, `population` FROM `countries`
+WHERE `contineNt_code` = 'EU'
+ORDER BY `population` DESC,
+	`country_name`
 LIMIT 30;
 
 #Problem 24
