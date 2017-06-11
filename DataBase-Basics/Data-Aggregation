@@ -1,1 +1,28 @@
+#Problem 1
+
+SELECT COUNT(*) AS `count` FROM `wizzard_deposits`;
+
+#Problem 2
+
+SELECT `magic_wand_size` AS `longest_magic_wand`
+FROM `wizzard_deposits`
+ORDER BY `magic_wand_size` DESC
+LIMIT 1;
+
+#Problem 3
+
+SELECT DISTINCT `deposit_group`, MAX(`magic_wand_size`) AS `longest_magic_wand`
+FROM `wizzard_deposits` GROUP BY `deposit_group`;
+
+#Problem 4
+
+SELECT `deposit_group` FROM `wizzard_deposits`
+ORDER BY (SELECT AVG(`magic_wand_size`) FROM `wizzard_deposits`)
+LIMIT 1;
+
+#Problem 5
+
+SELECT `deposit_group`,SUM(`deposit_amount`) AS `total_sum`
+FROM `wizzard_deposits`
+GROUP BY `deposit_group`;
 
