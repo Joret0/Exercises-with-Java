@@ -97,3 +97,27 @@ SELECT 44393.97 AS sum_difference;
 
 #Problem 13
 
+SELECT
+department_id,
+MIN(e.salary) AS minimum_salary
+FROM employees AS e
+WHERE e.hire_date > '2000-01-01'
+GROUP BY department_id
+HAVING department_id IN (2,5,7);
+
+#Problem 14
+
+CREATE TABLE new_table
+SELECT * FROM employees
+WHERE salary > 30000;
+
+DELETE FROM new_table
+WHERE manager_id = 42;
+
+UPDATE new_table AS t
+SET t.salary = t.salary + 5000
+WHERE t.department_id = 1;
+
+SELECT department_id, AVG(salary) AS manager_id FROM new_table
+GROUP BY department_id;
+
