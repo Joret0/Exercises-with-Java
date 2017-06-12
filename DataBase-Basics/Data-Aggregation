@@ -26,3 +26,28 @@ SELECT `deposit_group`,SUM(`deposit_amount`) AS `total_sum`
 FROM `wizzard_deposits`
 GROUP BY `deposit_group`;
 
+#Problem 6
+
+SELECT 
+w.deposit_group,SUM(w.deposit_amount) AS total_sum
+FROM wizzard_deposits AS w
+WHERE w.magic_wand_creator = 'Ollivander family'
+GROUP BY w.deposit_group;
+
+#Problem 7
+
+SELECT w.deposit_group, SUM(w.deposit_amount) AS total_sum
+FROM `wizzard_deposits` AS w
+WHERE w.magic_wand_creator = 'Ollivander family'
+GROUP BY w.deposit_group
+HAVING total_sum < 150000
+ORDER BY total_sum DESC;
+
+#Problem 8
+
+SELECT w.deposit_group, w.magic_wand_creator, MIN(w.deposit_charge) AS minimum_deposit_charge
+FROM `wizzard_deposits` AS w
+GROUP BY w.deposit_group, w.magic_wand_creator
+ORDER BY w.magic_wand_creator,w.deposit_group;
+
+#Problem 9
