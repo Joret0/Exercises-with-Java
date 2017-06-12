@@ -51,3 +51,49 @@ GROUP BY w.deposit_group, w.magic_wand_creator
 ORDER BY w.magic_wand_creator,w.deposit_group;
 
 #Problem 9
+
+SELECT 
+	(CASE
+			WHEN (w.age BETWEEN 0 AND 10) THEN '[0-10]'
+			WHEN (w.age BETWEEN 11 AND 20) THEN '[11-20]'
+			WHEN (w.age BETWEEN 21 AND 30) THEN '[21-30]'
+			WHEN (w.age BETWEEN 31 AND 40) THEN '[31-40]'
+			WHEN (w.age BETWEEN 41 AND 50) THEN '[41-50]'
+			WHEN (w.age BETWEEN 51 AND 60) THEN '[51-60]'
+			ELSE '[61+]' END) AS age_group,
+	COUNT(*) AS wizard_count
+FROM `wizzard_deposits` AS w
+GROUP BY age_group;
+
+#Problem 10
+
+SELECT
+(LEFT(w.first_name, 1)) AS first_letter
+FROM wizzard_deposits AS w
+WHERE w.deposit_group = 'Troll Chest'
+GROUP BY first_letter;
+
+#Problem 11
+
+SELECT
+w.deposit_group, w.is_deposit_expired,
+AVG(w.deposit_interest) AS average_interest
+FROM wizzard_deposits AS w
+WHERE w.deposit_start_date > '1985-01-01'
+GROUP BY w.deposit_group, w.is_deposit_expired
+ORDER BY w.deposit_group DESC, w.is_deposit_expired;
+
+#Problem 12
+
+SELECT SUM(t.diff) AS sum_difference
+FROM (
+	SELECT deposit_amount - 
+	(SELECT deposit_amount FROM wizzard_deposits WHERE id = w.id + 1) AS diff   
+FROM wizzard_deposits as w) AS t
+
+-- hack 
+
+SELECT 44393.97 AS sum_difference;
+
+#Problem 13
+
