@@ -1,0 +1,46 @@
+#Problem 1
+
+CREATE TABLE passports
+(
+passport INT NOT NULL AUTO_INCREMENT,
+passport_number VARCHAR(50) UNIQUE NOT NULL ,
+PRIMARY KEY(passport)
+) AUTO_INCREMENT = 101;
+
+INSERT INTO passports(passport_number) 
+	VALUES('N34FG21B'),('K65LO4R7'),('ZE657QP2');
+
+CREATE TABLE persons 
+(
+person_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+first_name varchar(50),
+salary DOUBLE(13,2) NOT NULL,
+passport_id INT NOT NULL,
+FOREIGN KEY(passport_id) REFERENCES passports(passport)
+);
+
+INSERT INTO persons(first_name,salary,passport_id)
+	VALUES('Roberto',43300.00,102),('Tom',56100.00,103),('Yana',60200.00,101)
+  
+  #Problem 2
+  
+  CREATE TABLE manufacturers
+(
+manufacturer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(50) NOT NULL ,
+established_on datetime 
+);
+
+CREATE TABLE models 
+(
+model_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(50) NOT NULL ,
+manufacturer_id INT NOT NULL,
+FOREIGN KEY(manufacturer_id) REFERENCES manufacturers(manufacturer_id)
+) AUTO_INCREMENT = 101;
+
+INSERT INTO manufacturers(name,established_on)
+VALUES('BMW','1916-03-01'),('Tesla','2003-01-01'),('Lada','1966-05-01');
+
+INSERT INTO models(name,manufacturer_id)
+VALUES('X1',1),('i6',1),('Model S',2),('Model X',2),('Model 3',2),('Nova',3);
