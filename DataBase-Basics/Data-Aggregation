@@ -121,3 +121,38 @@ WHERE t.department_id = 1;
 SELECT department_id, AVG(salary) AS manager_id FROM new_table
 GROUP BY department_id;
 
+#Problem 15
+
+SELECT department_id,
+MAX(salary) as max_salary
+FROM employees
+GROUP BY department_id
+HAVING MAX(salary) NOT BETWEEN 30000 AND 70000;
+
+#Problem 16
+
+SELECT COUNT(*) `count`
+FROM employees AS e
+WHERE e.manager_id IS NULL;
+
+#Problem 17
+
+SELECT
+DISTINCT e.department_id,
+e.salary AS third_highest_salary
+FROM employees AS e
+WHERE e.salary = (SELECT DISTINCT m.salary
+FROM employees AS m
+WHERE m.department_id = e.department_id
+ORDER BY m.salary DESC
+LIMIT 2,1)
+GROUP BY e.department_id;
+
+#Problem 18
+SELECT e.first_name, e.last_name, e.department_id FROM employees AS e,
+employees AS m
+WHERE e.department_id = m.department_id
+AND e.salary > (SELECT AVG(salary) FROM employees WHERE department_id = e.department_id)
+GROUP BY e.first_name, e.last_name, e.department_id
+ORDER BY e.department_id
+LIMIT 10;
