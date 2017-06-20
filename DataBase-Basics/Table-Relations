@@ -98,3 +98,91 @@ VALUES
 
 #Problem 5
 
+CREATE TABLE item_types
+(
+item_type_id INT NOT NULL PRIMARY KEY,
+name VARCHAR(50)
+);
+
+CREATE TABLE cities
+(
+city_id INT NOT NULL PRIMARY KEY,
+name VARCHAR(50)
+);
+
+CREATE TABLE items
+(
+item_id INT NOT NULL PRIMARY KEY,
+name VARCHAR(50),
+item_type_id INT NOT NULL,
+FOREIGN KEY (item_type_id) REFERENCES item_types(item_type_id)
+);
+
+CREATE TABLE customers
+(
+customer_id INT NOT NULL PRIMARY KEY,
+name VARCHAR(50),
+birthday DATE NOT NULL,
+city_id INT NOT NULL,
+FOREIGN KEY (city_id) REFERENCES cities(city_id)
+);
+
+CREATE TABLE orders
+(
+order_id INT NOT NULL PRIMARY KEY,
+customer_id INT NOT NULL,
+FOREIGN KEY(customer_id) REFERENCES customers(customer_id)
+);
+
+CREATE TABLE order_items
+(
+order_id INT NOT NULL,
+item_id INT NOT NULL,
+UNIQUE(order_id,item_id),
+FOREIGN KEY(item_id) REFERENCES items(item_id),
+FOREIGN KEY(order_id) REFERENCES orders(order_id)
+);
+
+#Problem 6
+
+CREATE TABLE majors
+(
+major_id INT NOT NULL PRIMARY KEY,
+name VARCHAR(50)
+);
+
+CREATE TABLE subjects
+(
+subject_id INT NOT NULL PRIMARY KEY,
+subject_name VARCHAR(50)
+);
+
+CREATE TABLE students
+(
+student_id INT NOT NULL PRIMARY KEY,
+student_number VARCHAR(12),
+student_name VARCHAR(50),
+major_id INT NOT NULL,
+FOREIGN KEY(major_id) REFERENCES majors(major_id)
+);
+
+CREATE TABLE agenda
+(
+student_id INT NOT NULL,
+subject_id INT NOT NULL,
+FOREIGN KEY(student_id) REFERENCES students(student_id),
+FOREIGN KEY(subject_id) REFERENCES subjects(subject_id),
+UNIQUE(student_id, subject_id)
+);
+
+CREATE TABLE payments
+(
+payment_id INT(11) NOT NULL PRIMARY KEY,
+payment_date DATE,
+payment_amount DECIMAL(8,2),
+student_id INT(11) NOT NULL,
+FOREIGN KEY(student_id) REFERENCES students(student_id)
+);
+
+#Problem 9
+
