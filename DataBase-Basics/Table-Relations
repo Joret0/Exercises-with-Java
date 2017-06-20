@@ -22,9 +22,9 @@ FOREIGN KEY(passport_id) REFERENCES passports(passport)
 INSERT INTO persons(first_name,salary,passport_id)
 	VALUES('Roberto',43300.00,102),('Tom',56100.00,103),('Yana',60200.00,101)
   
-  #Problem 2
-  
-  CREATE TABLE manufacturers
+#Problem 2
+ 
+CREATE TABLE manufacturers
 (
 manufacturer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 name VARCHAR(50) NOT NULL ,
@@ -44,3 +44,57 @@ VALUES('BMW','1916-03-01'),('Tesla','2003-01-01'),('Lada','1966-05-01');
 
 INSERT INTO models(name,manufacturer_id)
 VALUES('X1',1),('i6',1),('Model S',2),('Model X',2),('Model 3',2),('Nova',3);
+
+#Problem 3
+
+CREATE TABLE students
+(
+student_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE exams
+(
+exam_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(50) NOT NULL
+) AUTO_INCREMENT = 101;
+
+CREATE TABLE students_exams
+(
+student_id INT NOT NULL,
+exam_id INT NOT NULL,
+FOREIGN KEY(exam_id) REFERENCES exams(exam_id),
+FOREIGN KEY(student_id) REFERENCES students(student_id),
+UNIQUE(student_id,exam_id)
+);
+
+
+INSERT INTO students(name) VALUES('Mila'),('Toni'),('Ron');
+
+INSERT INTO exams(name) VALUES('Spring MVC'),('Neo4j'),('Oracle 11g');
+
+INSERT INTO students_exams(student_id,exam_id)
+VALUES(1,101),(1,102),(2,101),(3,103),(2,102),(2,103);
+
+#Problem 4
+
+CREATE TABLE teachers
+(
+teacher_id INT NOT NULL PRIMARY KEY,
+name VARCHAR(50),
+manager_id INT,
+FOREIGN KEY(manager_id) REFERENCES teachers(teacher_id)
+);
+
+INSERT INTO teachers(teacher_id,name) 
+VALUES (101,'John');
+INSERT INTO teachers(teacher_id,name,manager_id)
+VALUES
+(105,'Mark',101),
+(106,'Greta',101),
+(102,'Maya',106),
+(103,'Silvia',106),
+(104,'Ted',105);
+
+#Problem 5
+
