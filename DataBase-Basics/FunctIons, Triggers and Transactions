@@ -36,8 +36,23 @@ WHERE (t.name = townName)
 ORDER BY e.first_name, e.last_name; END
 
 5.
-CREATE FUNCTION ufn_get_salary_level (salary DECIMAL(19,4)) RETURNS VARCHAR(50) BEGIN DECLARE level_salary VARCHAR(20); IF(salary < 30000) THEN SET level_salary := 'Low'; ELSEIF(salary >= 30000 AND salary <= 50000) THEN SET level_salary := 'Average'; ELSE SET level_salary := 'High'; END IF; RETURN level_salary; END
+DELIMITER $$
+DROP FUNCTION IF EXISTS ufn_get_salary_level;
 
+CREATE FUNCTION ufn_get_salary_level (salary DECIMAL(19,4))
+RETURNS VARCHAR(50)
+BEGIN DECLARE level_salary VARCHAR(20);
+IF(salary < 30000)
+THEN SET level_salary := 'Low';
+ELSEIF(salary >= 30000
+AND salary <= 50000)
+THEN SET level_salary := 'Average';
+ELSE SET level_salary := 'High';
+END IF;
+RETURN level_salary;
+END $$
+
+SELECT ufn_get_salary_level(40000);
 6.
 CREATE PROCEDURE usp_get_employees_by_salary_level(pLevel VARCHAR(50)) BEGIN IF(pLevel = 'Low') THEN
 SELECT e.first_name, e.last_name
