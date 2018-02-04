@@ -309,14 +309,3 @@ JOIN user_game_items AS `ugi` ON ugi.user_game_id = ug.id
 JOIN items AS `i` ON i.id = ugi.item_id
 WHERE(g.name = 'Edinburgh')
 ORDER BY i.name; END
-© 2018 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-API
-Training
-Shop
-Blog
