@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="hospitaldb/Hibernate" uuid="1774b9e0-6a02-45eb-903c-8857ac73148a">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <first-sync>true</first-sync>
+      <user-name>root</user-name>
+    </data-source>
+  </component>
+</project>

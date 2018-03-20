@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="gringottsdatabase/Hibernate" uuid="6d2065e8-7bd1-4478-aa64-b130cf8523dd">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <first-sync>true</first-sync>
+      <user-name>root</user-name>
+    </data-source>
+  </component>
+</project>
